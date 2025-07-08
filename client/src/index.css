@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* Additional global styles */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Background style for hero section */
+.hero-section {
+  background: linear-gradient(to bottom, #ffffff, #f0f7ff);
+  min-height: 100vh;
+}
+
+/* Animation duration classes */
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+/* For smoother animations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for icons */
+i[class^="ri-"] {
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Notification Progress Bar Animation */
+@keyframes progress-bar {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.animate-progress-bar {
+  animation: progress-bar linear forwards;
+  width: 100%;
+}
+
+/* Improved visibility for animated elements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Better visibility on mobile */
+@media screen and (max-width: 640px) {
+  .ri-plane-fill,
+  .ri-helicopter-fill,
+  .ri-satellite-fill,
+  .ri-rocket-2-fill,
+  .ri-flight-takeoff-fill {
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+  }
+}
