@@ -8,6 +8,8 @@ import ImportantDates from "./pages/ImportantDates";
 import Speakers from "./pages/Speakers";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile";
 import Sponsorship from "./pages/Sponsorship";
 import Committee from "./pages/Committee";
@@ -40,6 +42,11 @@ function App() {
               {/* Participation routes */}
               <Route path="/registration" element={<Registration />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route
+                path="/reset-password/:resettoken"
+                element={<ResetPassword />}
+              />
               <Route path="/profile" element={<Profile />} />
               <Route path="/sponsorship" element={<Sponsorship />} />
 
@@ -71,12 +78,8 @@ function App() {
               <Route
                 path="/admin/paper/:paperId"
                 element={<PaperDetailsPage />}
-
               />
-
             </Routes>
-         
-
           </main>
           {/* Footer */}
           <Footer />
