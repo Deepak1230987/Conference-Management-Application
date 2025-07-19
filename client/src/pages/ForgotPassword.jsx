@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ForgotPassword = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -30,6 +31,7 @@ const ForgotPassword = () => {
             "Password reset email sent! Please check your inbox and spam folder."
           );
         }
+        navigate("/login"); // Redirect to login page after successful submission
         setEmail(""); // Clear the form
       }
     } catch (err) {

@@ -220,7 +220,7 @@ export const forgotPassword = async (req, res) => {
         console.log('User saved with reset token');
 
         // Create reset url - use CLIENT_URL instead of server host
-        const clientUrl = process.env.CLIENT_URL || 'http://10.25.32.177/ictacem2025';
+        const clientUrl = process.env.CLIENT_URL || 'http://10.25.1.5/ictacem2025';
         const resetUrl = `${clientUrl}/reset-password/${resetToken}`;
         console.log('Reset URL:', resetUrl);
 

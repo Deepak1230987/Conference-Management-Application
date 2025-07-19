@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import SimpleCaptcha from "../components/SimpleCaptcha";
+import { Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -59,7 +60,7 @@ const Login = () => {
       // Login without external captcha token
       await login(email, password);
       // If we get here, login was successful
-      navigate("/"); // Redirect to home page after login
+      navigate("/profile"); // Redirect to home page after login
     } catch (err) {
       // Display the actual error message from the server
       if (err.response && err.response.data && err.response.data.message) {
@@ -179,35 +180,9 @@ const Login = () => {
                       className="text-gray-500 focus:outline-none"
                     >
                       {showPassword ? (
-                        <svg
-                          className="h-5 w-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13.875 18.825A6.978 6.978 0 0015 12c0-1.173-.303-2.276-.825-3.225M8.175 18.825A6.978 6.978 0 009 12c0-1.173.303-2.276.825-3.225M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"
-                          />
-                        </svg>
+                       <Eye className="h-5 w-5" />
                       ) : (
-                        <svg
-                          className="h-5 w-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13.875 18.825A6.978 6.978 0 0015 12c0-1.173-.303-2.276-.825-3.225M8.175 18.825A6.978 6.978 0 009 12c0-1.173.303-2.276.825-3.225M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"
-                          />
-                        </svg>
+                       <EyeOff className="h-5 w-5" />
                       )}
                     </button>
                   </div>

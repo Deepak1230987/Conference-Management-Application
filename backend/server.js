@@ -7,6 +7,8 @@ import authRoutes from './routes/auth.route.js';
 import paperRoutes from './routes/paper.route.js';
 import adminRoutes from './routes/admin.route.js';
 import chatRoutes from './routes/chat.route.js';
+import notificationRoutes from './routes/notification.route.js';
+import emailTestRoutes from './routes/email-test.route.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -25,7 +27,7 @@ const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://10.25.32.177/ictacem2025',
+    origin: process.env.CLIENT_URL || 'http://10.25.1.5/ictacem2025',
     credentials: true
 }));
 app.use(express.json());
@@ -56,12 +58,18 @@ app.use('/ictacem2025/api/auth', authRoutes);
 app.use('/ictacem2025/api/papers', paperRoutes);
 app.use('/ictacem2025/api/admin', adminRoutes);
 app.use('/ictacem2025/api/chat', chatRoutes);
+app.use('/ictacem2025/api/notifications', notificationRoutes);
+app.use('/ictacem2025/api/email-test', emailTestRoutes);
 
 // Also keep the original routes for backward compatibility
 app.use('/api/auth', authRoutes);
 app.use('/api/papers', paperRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/notifications', notificationRoutes);
+app.use('/api/email-test', emailTestRoutes);
+
+
 
 // Routes with /ictacem2025 prefix
 app.get('/', (req, res) => {

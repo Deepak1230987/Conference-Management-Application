@@ -240,6 +240,7 @@ const PaperDetailsPage = () => {
         day: "numeric",
         hour: "2-digit",
         minute: "2-digit",
+        hour12: true,
       });
     } catch (error) {
       console.error("Error formatting date:", error);

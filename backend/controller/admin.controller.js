@@ -1,5 +1,6 @@
 import User from '../models/user.model.js';
 import Paper from '../models/paper.model.js';
+import NotificationService from '../utils/notificationService.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -52,7 +53,7 @@ export const updatePaperStatus = async (req, res) => {
         console.log('updatePaperStatus called with:', { paperId, status, review });
         console.log('req.user:', req.user);
 
-        if (!['review_awaited', 'review_in_progress', 'author_response_awaited', 'abstract_accepted', 'declined'].includes(status)) {
+        if (!['review_awaited', 'review_in_progress', 'author_response_awaited', 'abstract_accepted', 'approved', 'declined'].includes(status)) {
             console.log('Invalid status provided:', status);
             return res.status(400).json({ message: 'Invalid status' });
         }
@@ -71,6 +72,9 @@ export const updatePaperStatus = async (req, res) => {
             return res.status(401).json({ message: 'User authentication error' });
         }
 
+        // Store previous status for notification
+        const previousStatus = paper.status;
+
         // Update the paper status and review directly
         paper.status = status;
         paper.review = review || '';
@@ -86,6 +90,27 @@ export const updatePaperStatus = async (req, res) => {
         console.log('Paper adminEvaluation before save:', paper.adminEvaluation);
 
         await paper.save();
+
+        // Send notifications based on status change
+        try {
+            if (previousStatus !== status) {
+                if (status === 'approved') {
+                    await NotificationService.notifyPaperApproved(paperId, req.user._id, review);
+                } else if (status === 'declined') {
+                    await NotificationService.notifyPaperDeclined(paperId, req.user._id, review);
+                } else {
+                    await NotificationService.notifyPaperStatusChange(paperId, previousStatus, status, req.user._id, review);
+                }
+            }
+
+            // If there are review comments, notify about them
+            if (review && review.trim()) {
+                await NotificationService.notifyReviewComment(paperId, req.user._id, review);
+            }
+        } catch (notificationError) {
+            console.error('Error sending notification:', notificationError);
+            // Don't fail the main operation if notification fails
+        }
 
         console.log('Paper saved successfully');
         res.status(200).json(paper);
@@ -225,8 +250,17 @@ export const toggleAbstractSubmission = async (req, res) => {
             // Reset paper fields to allow re-upload
             paper.pdfPath = null;
             paper.status = 'author_response_awaited';
-            paper.review = '';
+            // Keep review comments for historical reference - don't clear them
+            // paper.review = '';
             paper.submittedAt = null;
+
+            // Send notification about abstract reset
+            try {
+                await NotificationService.notifyAbstractReset(paperId, req.user._id, resetReason);
+            } catch (notificationError) {
+                console.error('Error sending abstract reset notification:', notificationError);
+                // Don't fail the main operation if notification fails
+            }
         }
 
         await paper.save();
@@ -279,6 +313,14 @@ export const toggleFullPaperSubmission = async (req, res) => {
             paper.fullPaperPdfPath = null;
             paper.fullPaperSubmittedAt = null;
             paper.status = 'author_response_awaited';
+
+            // Send notification about full paper reset
+            try {
+                await NotificationService.notifyFullPaperReset(paperId, req.user._id, resetReason);
+            } catch (notificationError) {
+                console.error('Error sending full paper reset notification:', notificationError);
+                // Don't fail the main operation if notification fails
+            }
         }
 
         await paper.save();

@@ -148,7 +148,7 @@ const Admin = () => {
         </div>
         <button
           onClick={() =>
-            (window.location.href = "http://10.25.32.177/ictacem2025")
+            (window.location.href = "http://10.25.1.5/ictacem2025")
           }
           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
         >

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import NotificationDropdown from "./notifications/NotificationDropdown";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Navbar = () => {
     try {
       const result = await authLogout();
       if (result.success) {
-        navigate("/");
+        navigate("/login");
       }
     } catch (error) {
       console.error("Logout failed", error);
@@ -134,7 +135,7 @@ const Navbar = () => {
       </nav>
 
       {/* Secondary Action Navbar with animations and hover effects */}
-      <div className="fixed w-full top-16 z-40 bg-white shadow-md">
+      <div className="fixed w-full top-14 z-40 bg-white shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex justify-end items-center py-2 space-x-4">
             {!loading && (
@@ -151,6 +152,12 @@ const Navbar = () => {
                           {user.username || user.user?.username}
                         </span>
                       </span>
+
+                      {/* Notification Dropdown */}
+                      <NotificationDropdown />
+
+                    
+
                       <button
                         onClick={() => navigate("/profile")}
                         className="text-gray-600 hover:text-blue-500 flex items-center font-medium mx-3 transition-all duration-300 hover:scale-105 relative group"

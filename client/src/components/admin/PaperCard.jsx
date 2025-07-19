@@ -6,7 +6,6 @@ import AdminFileUpload from "./AdminFileUpload";
 
 const PaperCard = ({
   paper,
-  updatePaperStatus,
   activePaper,
   setActivePaper,
   setError,
@@ -115,7 +114,14 @@ const PaperCard = ({
       const dateObj = new Date(date);
       if (isNaN(dateObj.getTime())) return "Invalid date";
 
-      const options = { year: "numeric", month: "short", day: "numeric" };
+      const options = {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      };
       return dateObj.toLocaleDateString(undefined, options);
     } catch (error) {
       console.error("Error formatting date:", error);

@@ -563,8 +563,8 @@ export const reUploadAbstract = async (req, res) => {
         paper.status = 'review_awaited';
         // Update the main submission date to reflect the re-upload date
         paper.submittedAt = newSubmissionDate;
-        // Clear any previous review comments since this is a new submission
-        paper.review = '';
+        // Keep previous review comments for historical reference - they may still be relevant
+        // paper.review = '';
 
         await paper.save();
 

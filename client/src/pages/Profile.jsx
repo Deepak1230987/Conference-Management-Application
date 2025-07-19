@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -24,8 +24,8 @@ const Profile = () => {
   const [unreadCounts, setUnreadCounts] = useState({});
   const [totalUnreadMessages, setTotalUnreadMessages] = useState(0);
 
-  // Fetch unread message counts
-  const fetchUnreadCounts = async () => {
+  // Fetch unread message counts - using useCallback for proper dependency management
+  const fetchUnreadCounts = useCallback(async () => {
     try {
       console.log("Making API call to fetch unread counts...");
       const response = await fetch("/ictacem2025/api/chat/unread-counts", {
@@ -59,41 +59,42 @@ const Profile = () => {
       console.error("Error fetching unread counts:", error);
       console.error("Error details:", error.response?.data);
     }
-  };
+  }, []);
 
-  // Fetch user's submitted papers
+  // Fetch user's submitted papers - using useCallback for proper dependency management
+  const fetchPapers = useCallback(async () => {
+    if (!user) return;
+
+    try {
+      setPapersLoading(true);
+      const response = await axios.get("/api/papers/user");
+      setPapers(response.data);
+
+      // Initialize payment input states for each paper
+      const inputs = {};
+      response.data.forEach((paper) => {
+        inputs[paper._id] = "";
+      });
+      setPaymentInputs(inputs);
+
+      setPapersError(null);
+
+      // Fetch unread counts after papers are loaded
+      await fetchUnreadCounts();
+    } catch (err) {
+      console.error("Error fetching papers:", err);
+      setPapersError(
+        "Failed to load your submitted papers. Please try again later."
+      );
+    } finally {
+      setPapersLoading(false);
+    }
+  }, [user, fetchUnreadCounts]);
+
+  // Fetch papers when user changes
   useEffect(() => {
-    const fetchPapers = async () => {
-      if (!user) return;
-
-      try {
-        setPapersLoading(true);
-        const response = await axios.get("/api/papers/user");
-        setPapers(response.data);
-
-        // Initialize payment input states for each paper
-        const inputs = {};
-        response.data.forEach((paper) => {
-          inputs[paper._id] = "";
-        });
-        setPaymentInputs(inputs);
-
-        setPapersError(null);
-
-        // Fetch unread counts after papers are loaded
-        await fetchUnreadCounts();
-      } catch (err) {
-        console.error("Error fetching papers:", err);
-        setPapersError(
-          "Failed to load your submitted papers. Please try again later."
-        );
-      } finally {
-        setPapersLoading(false);
-      }
-    };
-
     fetchPapers();
-  }, [user]);
+  }, [fetchPapers]);
 
   // Poll for unread message updates every 30 seconds
   useEffect(() => {
@@ -116,7 +117,7 @@ const Profile = () => {
       console.log("Cleaning up unread counts polling interval");
       clearInterval(interval);
     };
-  }, [user, loading]);
+  }, [user, loading, fetchUnreadCounts]);
 
   // Browser notification for new messages
   useEffect(() => {
@@ -223,7 +224,14 @@ const Profile = () => {
       const date = new Date(dateString);
       if (isNaN(date.getTime())) return "Invalid date";
 
-      const options = { year: "numeric", month: "long", day: "numeric" };
+      const options = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      };
       return date.toLocaleDateString(undefined, options);
     } catch (error) {
       console.error("Error formatting date:", error);
@@ -318,7 +326,8 @@ const Profile = () => {
   const ThemeTag = ({ theme }) => {
     // Map themes to colors for visual distinction
     const themeColors = {
-      "Fluid Mechanics": "bg-blue-50 text-blue-700 border-blue-200",
+      "Aerodymanics and Fluid Mechanics":
+        "bg-blue-50 text-blue-700 border-blue-200",
       "Solid Mechanics and Dynamics":
         "bg-indigo-50 text-indigo-700 border-indigo-200",
       "Propulsion and Combustion":
@@ -433,36 +442,11 @@ const Profile = () => {
       formData.append("paperPdf", selectedFile);
 
       // Call API to re-upload abstract
-      const response = await axios.post(
-        `/api/papers/${paperId}/re-upload-abstract`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      // Log the response to debug
-      console.log("Re-upload response:", response.data);
-
-      // Update papers list with new data - handle different response structures
-      setPapers((prevPapers) =>
-        prevPapers.map((paper) => {
-          if (paper._id === paperId) {
-            // Handle the response data properly
-            const updatedPaperData = response.data.paper || response.data;
-            return {
-              ...paper,
-              pdfPath: updatedPaperData.pdfPath || "uploaded",
-              status: updatedPaperData.status || "review_awaited",
-              submittedAt: updatedPaperData.submittedAt || paper.submittedAt,
-              review: updatedPaperData.review || "",
-            };
-          }
-          return paper;
-        })
-      );
+      await axios.post(`/api/papers/${paperId}/re-upload-abstract`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       // Display success notification
       setNotification({
@@ -476,6 +460,9 @@ const Profile = () => {
         ...prev,
         [paperId]: null,
       }));
+
+      // Refresh the papers list to ensure we have the latest data from the server
+      await fetchPapers();
     } catch (err) {
       console.error("Error re-uploading abstract:", err);
       setNotification({
@@ -799,26 +786,6 @@ const Profile = () => {
                       conference yet. Submit your research to share with the
                       aerospace community.
                     </p>
-                    {/* <button
-                      onClick={() => navigate("/submit-paper")}
-                      className="inline-flex items-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 mr-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                        />
-                      </svg>
-                      Submit Your First Paper
-                    </button> */}
                   </div>
                 ) : (
                   <>
@@ -1006,21 +973,30 @@ const Profile = () => {
                                       </p>
 
                                       <div className="mb-4">
-                                        <h5 className="font-medium text-gray-700 mb-2">
-                                          Payment Action
+                                        <h5 className="font-medium text-gray-700 mb-2 capitalize">
+                                          Procedure for payment
                                         </h5>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                           <div className="bg-gray-50 border border-gray-200 rounded p-3">
-                                            <div className="font-medium text-gray-800 mb-1">
+                                            <div className="font-medium text-[#ebbd34] mb-1 animate-pulse">
                                               Note
                                             </div>
+
                                             <div className="text-xs text-gray-600">
                                               <div>
-                                                On clicking "Pay Now", you will
-                                                be redirected to the payment
-                                                portal. Please ensure that you
-                                                complete the payment process to
-                                                confirm your submisson.
+                                                Follow the link "Pay Now" for
+                                                the fee payment process through
+                                                the Continuing Education
+                                                Programme webpage under the ERP
+                                                website of IIT Kharagpur.
+                                              </div>
+                                              <div>
+                                                Kindly use the link
+                                                (https://erp.iitkgp.ac.in/CEP/courses.htm)
+                                                to create a login for fee
+                                                payment with respect to the
+                                                programme id for ICTACEM2025:
+                                                IIT/CEP/CON/CON/2024-25/AE/156
                                               </div>
                                               <div className="mt-2">
                                                 Once the payment is completed,
@@ -1031,7 +1007,10 @@ const Profile = () => {
                                           <div className="bg-gray-50 border border-gray-200 rounded p-3">
                                             <button
                                               onClick={() =>
-                                                window.open("/paynow", "_blank")
+                                                window.open(
+                                                  "https://erp.iitkgp.ac.in/CEP/courses.htm",
+                                                  "_blank"
+                                                )
                                               }
                                               className="w-full mt-2 inline-flex justify-center items-center px-3 py-1.5 bg-emerald-600 text-white text-sm font-medium rounded hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition duration-200"
                                             >
@@ -1154,7 +1133,7 @@ const Profile = () => {
                                         />
                                       </svg>
                                       For payment-related queries, please
-                                      contact finance@ictacem2025.org
+                                      contact ictacem@aero.iitkgp.ac.in
                                     </div>
                                   </div>
                                 )}

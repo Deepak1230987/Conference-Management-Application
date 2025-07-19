@@ -21,9 +21,9 @@ import { useNavigate } from "react-router-dom";
  * @param {Function} props.updatePaperInUserState - Function to update paper state in user context
  * @param {Function} props.onToggleSubmission - Function to handle toggle submission
  */
-const UserCard = ({ user, fetchUserPapers, papers, setError }) => {
+const UserCard = ({ user,  papers,  }) => {
   const navigate = useNavigate();
-  const [isExpanded, setIsExpanded] = useState(false);
+
   const [paperCount, setPaperCount] = useState(null);
   const [paperStatus, setPaperStatus] = useState({
     review_awaited: 0,
@@ -86,7 +86,14 @@ const UserCard = ({ user, fetchUserPapers, papers, setError }) => {
   // Format date nicely
   const formatDate = (dateString) => {
     try {
-      const options = { year: "numeric", month: "short", day: "numeric" };
+      const options = {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      };
       return new Date(dateString).toLocaleDateString(undefined, options);
     } catch (error) {
       console.error("Error formatting date:", error);
@@ -94,18 +101,18 @@ const UserCard = ({ user, fetchUserPapers, papers, setError }) => {
     }
   };
 
-  const handleToggleExpansion = async () => {
-    try {
-      if (!isExpanded) {
-        // Only fetch papers when expanding
-        await fetchUserPapers(user._id);
-      }
-      setIsExpanded((prev) => !prev);
-    } catch (error) {
-      console.error("Error toggling expansion:", error);
-      setError && setError({ type: "error", message: "Failed to load papers" });
-    }
-  };
+  // const handleToggleExpansion = async () => {
+  //   try {
+  //     if (!isExpanded) {
+  //       // Only fetch papers when expanding
+  //       await fetchUserPapers(user._id);
+  //     }
+  //     setIsExpanded((prev) => !prev);
+  //   } catch (error) {
+  //     console.error("Error toggling expansion:", error);
+  //     setError && setError({ type: "error", message: "Failed to load papers" });
+  //   }
+  // };
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-200">
@@ -135,7 +142,6 @@ const UserCard = ({ user, fetchUserPapers, papers, setError }) => {
             >
               View Details
             </button>
-          
           </div>
         </div>
       </div>

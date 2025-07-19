@@ -19,7 +19,7 @@ export const useAdminStats = (allPapers = [], userCount = 0) => {
     // List of available themes
     const themes = useMemo(
         () => [
-            "Fluid Mechanics",
+            "Aerodymanics and Fluid Mechanics",
             "Solid Mechanics and Dynamics",
             "Flight Mechanics, Control and Navigation",
             "Propulsion and Combustion",

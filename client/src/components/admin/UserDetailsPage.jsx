@@ -87,48 +87,48 @@ const UserDetailsPage = () => {
     authLoading,
   ]);
 
-  const updatePaperStatus = async (
-    paperId,
-    status,
-    errorSetter,
-    reviewText
-  ) => {
-    try {
-      const response = await fetch(
-        `/ictacem2025/api/admin/papers/${paperId}/status`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({ status, review: reviewText }),
-        }
-      );
+  // const updatePaperStatus = async (
+  //   paperId,
+  //   status,
+  //   errorSetter,
+  //   reviewText
+  // ) => {
+  //   try {
+  //     const response = await fetch(
+  //       `/ictacem2025/api/admin/papers/${paperId}/status`,
+  //       {
+  //         method: "PUT",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         },
+  //         body: JSON.stringify({ status, review: reviewText }),
+  //       }
+  //     );
 
-      if (!response.ok) {
-        throw new Error("Failed to update paper status");
-      }
+  //     if (!response.ok) {
+  //       throw new Error("Failed to update paper status");
+  //     }
 
-      const updatedPaper = await response.json();
+  //     const updatedPaper = await response.json();
 
-      // Update the paper in the local state
-      setUserPapers((prevPapers) =>
-        prevPapers.map((paper) =>
-          paper._id === paperId ? updatedPaper : paper
-        )
-      );
+  //     // Update the paper in the local state
+  //     setUserPapers((prevPapers) =>
+  //       prevPapers.map((paper) =>
+  //         paper._id === paperId ? updatedPaper : paper
+  //       )
+  //     );
 
-      setError({
-        type: "success",
-        message: "Paper status updated successfully",
-      });
-      setActivePaper(null);
-    } catch (error) {
-      console.error("Error updating paper status:", error);
-      setError({ type: "error", message: "Failed to update paper status" });
-    }
-  };
+  //     setError({
+  //       type: "success",
+  //       message: "Paper status updated successfully",
+  //     });
+  //     setActivePaper(null);
+  //   } catch (error) {
+  //     console.error("Error updating paper status:", error);
+  //     setError({ type: "error", message: "Failed to update paper status" });
+  //   }
+  // };
 
   const toggleSubmission = async (paperId, type, reset) => {
     try {
@@ -182,6 +182,7 @@ const UserDetailsPage = () => {
       day: "numeric",
       hour: "2-digit",
       minute: "2-digit",
+      hour12: true,
     });
   };
 
@@ -207,6 +208,167 @@ const UserDetailsPage = () => {
       withFullPaper: userPapers.filter((p) => p.fullPaperPdfPath).length,
     };
     return stats;
+  };
+
+  const generateActivityTimeline = () => {
+    const activities = [];
+
+    // Add account creation
+    activities.push({
+      type: "account_created",
+      title: "Account Created",
+      date: userDetails.createdAt,
+      bgColor: "bg-blue-50",
+      borderColor: "border-blue-200",
+      iconBg: "bg-blue-500",
+      icon: (
+        <svg
+          className="w-5 h-5 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+          />
+        </svg>
+      ),
+    });
+
+    // Add paper submission activities
+    userPapers.forEach((paper) => {
+      // Add abstract submissions
+      if (
+        paper.abstractSubmissionHistory &&
+        paper.abstractSubmissionHistory.length > 0
+      ) {
+        paper.abstractSubmissionHistory.forEach((submission, index) => {
+          const isResubmission = index > 0 || submission.version > 1;
+          activities.push({
+            type: "abstract_submission",
+            title: isResubmission
+              ? `Abstract Re-uploaded: ${paper.title}`
+              : `Abstract Submitted: ${paper.title}`,
+            subtitle: `Version ${submission.version}`,
+            date: submission.submittedAt,
+            bgColor: isResubmission ? "bg-orange-50" : "bg-green-50",
+            borderColor: isResubmission
+              ? "border-orange-200"
+              : "border-green-200",
+            iconBg: isResubmission ? "bg-orange-500" : "bg-green-500",
+            icon: (
+              <svg
+                className="w-5 h-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+            ),
+          });
+        });
+      } else {
+        // Fallback for papers without submission history
+        activities.push({
+          type: "abstract_submission",
+          title: `Abstract Submitted: ${paper.title}`,
+          date: paper.submittedAt,
+          bgColor: "bg-green-50",
+          borderColor: "border-green-200",
+          iconBg: "bg-green-500",
+          icon: (
+            <svg
+              className="w-5 h-5 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+          ),
+        });
+      }
+
+      // Add full paper submissions
+      if (
+        paper.fullPaperSubmissionHistory &&
+        paper.fullPaperSubmissionHistory.length > 0
+      ) {
+        paper.fullPaperSubmissionHistory.forEach((submission, index) => {
+          const isResubmission = index > 0 || submission.version > 1;
+          activities.push({
+            type: "full_paper_submission",
+            title: isResubmission
+              ? `Full Paper Re-uploaded: ${paper.title}`
+              : `Full Paper Submitted: ${paper.title}`,
+            subtitle: `Version ${submission.version}`,
+            date: submission.submittedAt,
+            bgColor: isResubmission ? "bg-purple-50" : "bg-indigo-50",
+            borderColor: isResubmission
+              ? "border-purple-200"
+              : "border-indigo-200",
+            iconBg: isResubmission ? "bg-purple-500" : "bg-indigo-500",
+            icon: (
+              <svg
+                className="w-5 h-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+            ),
+          });
+        });
+      } else if (paper.fullPaperPdfPath) {
+        // Fallback for papers with full paper but no submission history
+        activities.push({
+          type: "full_paper_submission",
+          title: `Full Paper Submitted: ${paper.title}`,
+          date: paper.fullPaperSubmittedAt || paper.submittedAt,
+          bgColor: "bg-indigo-50",
+          borderColor: "border-indigo-200",
+          iconBg: "bg-indigo-500",
+          icon: (
+            <svg
+              className="w-5 h-5 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+          ),
+        });
+      }
+    });
+
+    // Sort activities by date (most recent first)
+    return activities.sort((a, b) => new Date(b.date) - new Date(a.date));
   };
 
   if (loading) {
@@ -634,7 +796,7 @@ const UserDetailsPage = () => {
             )}
 
             {activeTab === "activity" && (
-              <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl  shadow-lg p-8 border border-gray-100">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
                   <svg
                     className="w-6 h-6 mr-3 text-indigo-600"
@@ -651,59 +813,29 @@ const UserDetailsPage = () => {
                   </svg>
                   Recent Activity
                 </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center p-4 bg-blue-50 rounded-xl border border-blue-200">
-                    <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                    </div>
-                    <div className="ml-4">
-                      <p className="font-semibold text-gray-900">
-                        Account Created
-                      </p>
-                      <p className="text-gray-600 text-sm">
-                        {formatDate(userDetails.createdAt)}
-                      </p>
-                    </div>
-                  </div>
-                  {userPapers.map((paper, index) => (
+                <div className="space-y-4 max-h-[600px] overflow-y-auto">
+                  {generateActivityTimeline().map((activity, index) => (
                     <div
                       key={index}
-                      className="flex items-center p-4 bg-green-50 rounded-xl border border-green-200"
+                      className={`flex items-center p-4 rounded-xl border ${activity.bgColor} ${activity.borderColor}`}
                     >
-                      <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                        <svg
-                          className="w-5 h-5 text-white"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
+                      <div
+                        className={`w-10 h-10 ${activity.iconBg} rounded-full flex items-center justify-center`}
+                      >
+                        {activity.icon}
                       </div>
                       <div className="ml-4">
                         <p className="font-semibold text-gray-900">
-                          Paper Submitted: {paper.title}
+                          {activity.title}
                         </p>
                         <p className="text-gray-600 text-sm">
-                          {formatDate(paper.submittedAt)}
+                          {formatDate(activity.date)}
                         </p>
+                        {activity.subtitle && (
+                          <p className="text-gray-500 text-xs mt-1">
+                            {activity.subtitle}
+                          </p>
+                        )}
                       </div>
                     </div>
                   ))}

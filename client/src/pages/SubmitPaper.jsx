@@ -64,7 +64,7 @@ const SubmitPaper = () => {
 
   // Themes for dropdown
   const themes = [
-    "Fluid Mechanics",
+    "Aerodymanics and Fluid Mechanics",
     "Solid Mechanics and Dynamics",
     "Flight Mechanics, Control and Navigation",
     "Propulsion and Combustion",
@@ -260,11 +260,11 @@ const SubmitPaper = () => {
     }
   };
 
-  // Handle submit another paper
-  const handleSubmitAnother = () => {
-    setShowSuccessModal(false);
-    window.scrollTo(0, 0);
-  };
+  // // Handle submit another paper
+  // const handleSubmitAnother = () => {
+  //   setShowSuccessModal(false);
+  //   window.scrollTo(0, 0);
+  // };
 
   // Close modal handler
   const handleCloseModal = () => {
@@ -550,15 +550,10 @@ const SubmitPaper = () => {
                       has been successfully submitted. Thank you!
                     </p>
                     <div className="flex flex-col sm:flex-row w-full gap-4">
-                      <button
-                        onClick={handleSubmitAnother}
-                        className="w-full px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300"
-                      >
-                        Submit Another Paper
-                      </button>
+                     
                       <button
                         onClick={handleViewSubmissions}
-                        className="w-full px-6 py-3 bg-gray-100 text-gray-800 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300"
+                        className="w-full px-6 py-3 bg-blue-600 text-gray-800 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300"
                       >
                         View My Submissions
                       </button>

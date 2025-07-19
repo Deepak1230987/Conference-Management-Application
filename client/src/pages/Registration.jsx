@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import SimpleCaptcha from "../components/SimpleCaptcha";
+import { Eye, EyeOff } from "lucide-react";
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -70,7 +71,7 @@ const Registration = () => {
         if (loginResult.success) {
           // Redirect to home page after successful login
           setTimeout(() => {
-            navigate("/");
+            navigate("/profile");
           }, 1500);
         } else {
           // If login fails after registration, show a success message but allow manual login
@@ -218,35 +219,9 @@ const Registration = () => {
                       className="text-gray-500 focus:outline-none"
                     >
                       {showPassword ? (
-                        <svg
-                          className="h-5 w-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13.875 18.825A6.978 6.978 0 0012 19a6.978 6.978 0 00-1.875-.175M16.5 8.625A4.978 4.978 0 0117 12c0 1.104-.356 2.126-.975 2.958M8.625 16.5A4.978 4.978 0 018 12c0-1.104.356-2.126.975-2.958M15.75 3.75l-7.5 7.5M3.75 15.75l7.5-7.5"
-                          />
-                        </svg>
+                        <Eye className="h-5 w-5" />
                       ) : (
-                        <svg
-                          className="h-5 w-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13.875 18.825A6.978 6.978 0 0012 19a6.978 6.978 0 00-1.875-.175M16.5 8.625A4.978 4.978 0 0117 12c0 1.104-.356 2.126-.975 2.958M8.625 16.5A4.978 4.978 0 018 12c0-1.104.356-2.126.975-2.958M15.75 3.75l-7.5 7.5M3.75 15.75l7.5-7.5"
-                          />
-                        </svg>
+                        <EyeOff className="h-5 w-5" />
                       )}
                     </button>
                   </div>
@@ -278,35 +253,9 @@ const Registration = () => {
                       className="text-gray-500 focus:outline-none"
                     >
                       {showConfirmPassword ? (
-                        <svg
-                          className="h-5 w-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13.875 18.825A6.978 6.978 0 0012 19a6.978 6.978 0 00-1.875-.175M16.5 8.625A4.978 4.978 0 0117 12c0 1.104-.356 2.126-.975 2.958M8.625 16.5A4.978 4.978 0 018 12c0-1.104.356-2.126.975-2.958M15.75 3.75l-7.5 7.5M3.75 15.75l7.5-7.5"
-                          />
-                        </svg>
+                       <Eye className="h-5 w-5" />
                       ) : (
-                        <svg
-                          className="h-5 w-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13.875 18.825A6.978 6.978 0 0012 19a6.978 6.978 0 00-1.875-.175M16.5 8.625A4.978 4.978 0 0117 12c0 1.104-.356 2.126-.975 2.958M8.625 16.5A4.978 4.978 0 018 12c0-1.104.356-2.126.975-2.958M15.75 3.75l-7.5 7.5M3.75 15.75l7.5-7.5"
-                          />
-                        </svg>
+                       <EyeOff className="h-5 w-5" />
                       )}
                     </button>
                   </div>

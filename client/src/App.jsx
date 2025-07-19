@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile";
+import NotificationsPage from "./pages/NotificationsPage";
 import Sponsorship from "./pages/Sponsorship";
 import Committee from "./pages/Committee";
 import Footer from "./components/Footer";
@@ -21,6 +22,7 @@ import SubmitFullPaper from "./pages/SubmitFullPaper";
 import UserDetailsPage from "./components/admin/UserDetailsPage";
 import PaperDetailsPage from "./components/admin/PaperDetailsPage";
 import SubmissionHistoryModal from "./components/admin/SubmissionHistoryModal";
+import Brouchure from "./pages/Brouchure";
 
 function App() {
   return (
@@ -48,6 +50,7 @@ function App() {
                 element={<ResetPassword />}
               />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/notifications" element={<NotificationsPage />} />
               <Route path="/sponsorship" element={<Sponsorship />} />
 
               <Route path="/submit" element={<SubmitPaper />} />
@@ -57,19 +60,7 @@ function App() {
               />
 
               {/* Info routes */}
-              <Route
-                path="/brochure"
-                element={
-                  <div className="text-center my-16">
-                    <h1 className="text-4xl font-bold text-blue-600">
-                      Brochure
-                    </h1>
-                    <p className="text-xl mt-4 text-gray-600">
-                      View and download our official brochures
-                    </p>
-                  </div>
-                }
-              />
+              <Route path="/brochure" element={<Brouchure />} />
               <Route path="/committee" element={<Committee />} />
 
               {/* Admin routes */}
