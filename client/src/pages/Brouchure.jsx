@@ -137,14 +137,6 @@ const Brouchure = () => {
                 )}
               </div>
             </div>
-
-            {/* Footer */}
-            <div className="bg-gray-50 px-6 py-4">
-              <div className="flex items-center justify-between text-sm text-gray-600">
-                <p>Last updated: January 2025</p>
-                <p>File format: PDF</p>
-              </div>
-            </div>
           </div>
         </div>
 

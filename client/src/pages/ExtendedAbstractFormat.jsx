@@ -4,7 +4,8 @@ import { Download, FileText, Eye, ExternalLink } from "lucide-react";
 const ExtendedAbstractFormat = () => {
   const [pdfError, setPdfError] = useState(false);
 
-  const formatPath = "/ictacem2025/api/extended-abstract-format";
+  const formatPath =
+    "/ictacem2025/api/documents/format_for_Extended_Abstract.pdf";
 
   const handleDownload = () => {
     const link = document.createElement("a");
@@ -135,14 +136,6 @@ const ExtendedAbstractFormat = () => {
                     </div>
                   </div>
                 )}
-              </div>
-            </div>
-
-            {/* Footer */}
-            <div className="bg-gray-50 px-6 py-4">
-              <div className="flex items-center justify-between text-sm text-gray-600">
-                <p>Last updated: January 2025</p>
-                <p>File format: PDF</p>
               </div>
             </div>
           </div>
