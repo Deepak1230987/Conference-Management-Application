@@ -1,146 +1,214 @@
 import React from "react";
 
 const Committee = () => {
-  
-// Committee data organized by sections
+  // Committee data organized by sections
 
-  // const committeeData = [
-  //   {
-  //     title: "Patrons",
-  //     members: [
-  //       { name: "Prof. V. K. Tewari", position: "Director, IIT Kharagpur" },
-  //     ],
-  //   },
-  //   {
-  //     title:
-  //       "SECRETARIATS OF JOINT CONFERENCE OF ICTACEM, APCATS, AJSAE AND AESI, KOLKATA",
-  //     members: [
-  //       {
-  //         name: "Mr. A. S. Kiran Kumar",
-  //         position: "Patron, President, AeSI, New Delhi, Ex-Chairman, ISRO",
-  //       },
-  //       {
-  //         name: "Prof. M. Sinha",
-  //         position:
-  //           "Mentor, HoD, Department of Aerospace Engineering, IIT Kharagpur",
-  //       },
-  //       {
-  //         name: "Gp. Capt. T. K. Ray",
-  //         position: "Mentor, Chairman, AeSI, Kolkata",
-  //       },
-  //       {
-  //         name: "Prof. K. P. Sinhamahapatra",
-  //         position:
-  //           "Conference Chair, Department of Aerospace Engineering, IIT Kharagpur",
-  //         email: "ictacem@aero.iitkgp.ac.in",
-  //       },
-  //       {
-  //         name: "Prof. C. D. Kong",
-  //         position:
-  //           "Conference Chair, International Visiting Professor, Department of Aerospace Engineering, IIT Kharagpur",
-  //         email: "cdgong@aero.iitkgp.ac.in",
-  //       },
-  //       {
-  //         name: "Prof. B. N. Singh",
-  //         position:
-  //           "Conference Vice-Chair, Department of Aerospace Engineering, IIT Kharagpur",
-  //         email: "ictacem@aero.iitkgp.ac.in",
-  //       },
-  //       {
-  //         name: "Prof. Amar Nath Mallick",
-  //         position:
-  //           "EC Member, AeSI, Kolkata Chapter & Professor, Department of Mechanical Engineering, NIT, Durgapur",
-  //         email: "amarnath.mullick@me.nitdgp.ac.in",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title:
-  //       "INTERNATIONAL COMMITTEE OF JOINT CONFERENCE OF ICTACEM, APCATS, AJSAE AND AeSI, KOLKATA",
-  //     members: [
-  //       {
-  //         name: "Prof. Xue-Ying Deng",
-  //         position: "Honorary Chair, Beihang University, China",
-  //       },
-  //       {
-  //         name: "Prof. C. D. Kong",
-  //         position: "Honorary Chair, Chosun University, Korea",
-  //       },
-  //       {
-  //         name: "Dr. C. Y. Hwang",
-  //         position:
-  //           "Honorary Co-Chair, Korea Aerospace Research Institute, Korea",
-  //       },
-  //       {
-  //         name: "Prof. S. S. Lee",
-  //         position: "Honorary Co-Chair; Gyeongsang National University, Korea",
-  //       },
-  //       {
-  //         name: "Prof. J. H. Hwang",
-  //         position: "Honorary Co-Chair. Korea Aerospace University, Korea",
-  //       },
-  //       {
-  //         name: "Prof. Yankui Wang",
-  //         position: "Honorary Co-Chair, Beihang University, China",
-  //       },
-  //       {
-  //         name: "Prof. Hai Huang",
-  //         position: "Honorary Co-Chair, Beihang University, China",
-  //       },
-  //       {
-  //         name: "Prof. Guowei Yang",
-  //         position: "Honorary Co-Chair, ARMC, CAS, China",
-  //       },
-  //       {
-  //         name: "Prof. Nobuhiko Yamasaki",
-  //         position: "Honorary Co-Chair, Kyushu University, Japan",
-  //       },
-  //       {
-  //         name: "Prof. Tai-Yan Kam",
-  //         position:
-  //           "Honorary Co-Chair, National Chiao Tung University, Taiwan, China",
-  //       },
-  //       {
-  //         name: "Prof. Mahir Dursun",
-  //         position: "Honorary Co-Chair, Gazi University, Turkey",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "INTERNATIONAL REPRESENTATIVES",
-  //     members: [
-  //       {
-  //         name: "Prof. D. K. Maiti",
-  //         position: "Department of Aerospace Engineering, IIT Kharagpur",
-  //         email: "dkmaiti@aero.iitkgp.ac.in",
-  //       },
-  //       {
-  //         name: "Dr. C. Y. Hwang",
-  //         position: "Korea Aerospace Research Institute",
-  //         email: "cyhwang@kari.re.kr",
-  //       },
-  //       {
-  //         name: "Prof. Shenyan Chen",
-  //         position: "Beihang University",
-  //         email: "chenshenyan@buaa.edu.cn",
-  //       },
-  //       {
-  //         name: "Prof. Nobuhiko Yamasaki",
-  //         position: "Kyushu University",
-  //         email: "yamasaki@aero.kyushu-u.ac.jp",
-  //       },
-  //       {
-  //         name: "Prof. J. L. Tsai",
-  //         position: "National Chiao Tung University",
-  //         email: "jialin@mail.nctu.edu.tw",
-  //       },
-  //       {
-  //         name: "Prof. Mahir Dursun",
-  //         position: "Gazi University",
-  //         email: "mdursun@gazi.edu.tr",
-  //       },
-  //     ],
-  //   },
+  const committeeData = [
+    {
+      title: "Patrons",
+      members: [
+        {
+          name: "Prof. Suman Chakraborty",
+          position: "Director, IIT Kharagpur",
+        },
+      ],
+    },
+    {
+      title: "Organizing Committee",
+      members: [
+        {
+          name: "Prof. Akshay Prakash",
+          position:
+            "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Amardip Ghosh",
+          position:
+            "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Anup Ghosh",
+          position:
+            "Co-Convenor, Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Arnab Roy",
+          position:
+            "Convenor, HOD, Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. B. N. Singh",
+          position:
+            "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. C. S. Mistry",
+          position: " Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. D. K. Maiti",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. K. P. Sinhamahapatra",
+          position: "Mentor, Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. M. R. Sunny",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+
+        {
+          name: "Prof. M. Sinha",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Mira Mitra",
+          position: "Co-Convenor, Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Mrinal Kaushik",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. N. K. Peyada",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Prasun Jana",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Ratan Joarder",
+          position: "Treasurer, Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. S. C. Pradhan",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Sandeep Saha",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Sikha Hota",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Somnath Ghosh",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Srinibas Karmakar",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Sunil Manohar Dash",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Susmita Bhattacharyya",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+      ],
+    },
+    {
+      title: "Technical Committee",
+      members: [
+        {
+          name: "Prof. N. K. Peyada",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Prasun Jana",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. Ratan Joarder",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+        {
+          name: "Prof. S. M. Dash",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
+        },
+      ],
+    },
+    {
+      title: "Advisory Committee",
+      members: [
+        {
+          name: "Prof. A K Ghosh",
+          position: "TATA Advanced Systems Limited",
+        },
+        {
+          name: "Prof. Abhay Anant Pashilkar",
+          position: "National Aerospace Laboratories",
+        },
+        {
+          name: "Prof. Abhijit Kushari",
+          position: "Indian Institute of Technology Kanpur",
+        },
+        {
+          name: "Prof. Avijit Chatterjee",
+          position: "Indian Institute of Technology Bombay",
+        },
+        {
+          name: "Prof. Debopam Das",
+          position: "Indian Institute of Technology Kanpur",
+        },
+        {
+          name: "Prof. Ernesto Benini",
+          position: "University of Padova",
+        },
+        {
+          name: "Prof. G. Jagadeesh",
+          position: "Indian Institute of Science, Bangalore",
+        },
+        {
+          name: "Prof. H. S. N. Murthy",
+          position: "Indian Institute of Technology Madras",
+        },
+        {
+          name: "Prof. Jayanta S. Kapat",
+          position: "University of Central Florida",
+        },
+        {
+          name: "Prof. Nandan K. Sinha",
+          position: "Indian Institute of Technology Madras",
+        },
+        {
+          name: "Prof. Radhakant Padhi",
+          position: "Indian Institute of Science, Bangalore",
+        },
+        {
+          name: "Prof. Raktim Bhattacharyya",
+          position: "Texas A&M University, USA",
+        },
+        {
+          name: "Prof. Samit Roy",
+          position: "University of Alabama",
+        },
+        {
+          name: "Prof. Santosh Kapuria",
+          position:
+            "Indian Institute of Technology Delhi",
+        },
+        {
+          name: "Prof. Sudarsan Kumar",
+          position:
+            "Indian Institute of Technology Bombay",
+        },
+        {
+          name: "Prof. Sunetra Sarkar",
+          position: "Indian Institute of Technology Madras",
+        },
+        {
+          name: "Prof. Tribikram Kundu",
+          position: "University of Arizona, USA",
+        },
+      ],
+    },
+  ];
   //   {
   //     title: "ICTACEM SECRETARIAT",
   //     members: [
@@ -152,62 +220,7 @@ const Committee = () => {
   //         name: "Prof. M Sinha",
   //         position: "Head of the department, Aerospace Engineering (Mentor)",
   //       },
-  //       {
-  //         name: "Prof. K P Sinhamahapatra",
-  //         position: "(Chairman)",
-  //         email: "ictacem@aero.iitkgp.ac.in",
-  //       },
-  //       {
-  //         name: "Prof. B N Singh",
-  //         position: "(Vice-Chairman)",
-  //         email: "ictacem@aero.iitkgp.ac.in",
-  //       },
-  //       { name: "Prof. A Roy", position: "(Secretary Fluid Mechanics)" },
-  //       {
-  //         name: "Prof. S M Dash",
-  //         position: "(Joint Secretary Fluid Mechanics)",
-  //       },
-  //       {
-  //         name: "Prof. M K Laha",
-  //         position: "(Secretary Flight Mechanics, Control and Navigation)",
-  //       },
-  //       {
-  //         name: "Prof. S Bhattacharyya",
-  //         position:
-  //           "(Joint Secretary Flight Mechanics, Control and Navigation)",
-  //       },
-  //       {
-  //         name: "Prof. Amardip Ghosh",
-  //         position: "(Secretary Propulsion & Combustion)",
-  //       },
-  //       {
-  //         name: "Prof. S Karmakar, Prof. C S Mistry",
-  //         position: "(Joint Secretary Propulsion & Combustion )",
-  //       },
-  //       {
-  //         name: "Prof. B N Singh",
-  //         position: "(Secretary Solid Mechanics and Dynamics)",
-  //       },
-  //       {
-  //         name: "Prof. M R Sunny",
-  //         position: "(Joint Secretary Solid Mechanics and Dynamics)",
-  //       },
-  //       {
-  //         name: "Prof. D K Maiti",
-  //         position: "(Secretary International relations & Sponsorship)",
-  //       },
-  //       {
-  //         name: "Prof. P Jana",
-  //         position: "(Joint Secretary International relations & Sponsorship )",
-  //       },
-  //       {
-  //         name: "Prof. S Saha, Prof S Hota",
-  //         position: "(Secretary Media & publication)",
-  //       },
-  //       {
-  //         name: "Prof. R Joarder, Prof. A Prakash",
-  //         position: "(Secretary Finance)",
-  //       },
+  //
   //     ],
   //   },
   //   {
@@ -268,10 +281,8 @@ const Committee = () => {
   //     members: [{ name: "Mr. S. Santra and Mr. U. Sarkar", position: "" }],
   //   },
   // ];
-  
-const committeeData = [];
 
-  // Function to render member card with different colors based on index
+  //  Function to render member card with different colors based on index
   const getMemberCardColor = (index) => {
     const colors = [
       "from-blue-500 to-indigo-600",

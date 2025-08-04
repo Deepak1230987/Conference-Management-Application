@@ -23,6 +23,7 @@ import UserDetailsPage from "./components/admin/UserDetailsPage";
 import PaperDetailsPage from "./components/admin/PaperDetailsPage";
 import SubmissionHistoryModal from "./components/admin/SubmissionHistoryModal";
 import Brouchure from "./pages/Brouchure";
+import ExtendedAbstractFormat from "./pages/ExtendedAbstractFormat";
 
 function App() {
   return (
@@ -61,6 +62,10 @@ function App() {
 
               {/* Info routes */}
               <Route path="/brochure" element={<Brouchure />} />
+              <Route
+                path="/extended-abstract-format"
+                element={<ExtendedAbstractFormat />}
+              />
               <Route path="/committee" element={<Committee />} />
 
               {/* Admin routes */}

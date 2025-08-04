@@ -53,13 +53,43 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Serve uploaded files - make sure this is before the routes
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Serve documents from public/documents folder
+app.use('/ictacem2025/api/documents', express.static(path.join(__dirname, 'public/documents')));
+app.use('/api/documents', express.static(path.join(__dirname, 'public/documents')));
+
+// Specific route for brochure with proper headers
+app.get('/ictacem2025/api/brochure', (req, res) => {
+    try {
+        const brochurePath = path.join(__dirname, 'public/documents/ICTACEM 2025 Brochure.pdf');
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'inline; filename="ICTACEM_2025_Brochure.pdf"');
+        res.sendFile(brochurePath);
+    } catch (error) {
+        console.error('Error serving brochure:', error);
+        res.status(500).json({ message: 'Error serving brochure file' });
+    }
+});
+
+// Specific route for extended abstract format with proper headers
+app.get('/ictacem2025/api/extended-abstract-format', (req, res) => {
+    try {
+        const formatPath = path.join(__dirname, 'public/documents/format_for_Extended_Abstract.pdf');
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'inline; filename="ICTACEM_2025_Extended_Abstract_Format.pdf"');
+        res.sendFile(formatPath);
+    } catch (error) {
+        console.error('Error serving extended abstract format:', error);
+        res.status(500).json({ message: 'Error serving extended abstract format file' });
+    }
+});
+
 // Mount all API routes under /ictacem2025 prefix FIRST (most specific routes first)
 app.use('/ictacem2025/api/auth', authRoutes);
 app.use('/ictacem2025/api/papers', paperRoutes);
 app.use('/ictacem2025/api/admin', adminRoutes);
 app.use('/ictacem2025/api/chat', chatRoutes);
 app.use('/ictacem2025/api/notifications', notificationRoutes);
-app.use('/ictacem2025/api/email-test', emailTestRoutes);
+
 
 // Also keep the original routes for backward compatibility
 app.use('/api/auth', authRoutes);
@@ -67,7 +97,7 @@ app.use('/api/papers', paperRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/notifications', notificationRoutes);
-app.use('/api/email-test', emailTestRoutes);
+
 
 
 

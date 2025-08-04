@@ -19,6 +19,11 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/", icon: "ri-home-4-line" },
     { name: "Brochure", path: "/brochure", icon: "ri-book-open-line" },
+    {
+      name: "Extended Abstract Format",
+      path: "/extended-abstract-format",
+      icon: "ri-file-text-line",
+    },
     { name: "Speakers", path: "/speakers", icon: "ri-user-3-line" },
     {
       name: "Important Dates",

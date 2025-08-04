@@ -83,7 +83,7 @@ const emailTemplates = {
                 </div>
                 
                 <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                    <p style="color: #7f8c8d; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email.</p>
+                    <p style="color: #eb4034; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email. If you have any queries, please contact us at <a href="mailto:ictacem@aero.iitkgp.ac.in">ictacem@aero.iitkgp.ac.in</a>.</p>
                 </footer>
             </div>
         `
@@ -118,8 +118,8 @@ const emailTemplates = {
                     </div>
                 </div>
                 
-                <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                    <p style="color: #7f8c8d; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email.</p>
+               <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                    <p style="color: #eb4034; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email. If you have any queries, please contact us at <a href="mailto:ictacem@aero.iitkgp.ac.in">ictacem@aero.iitkgp.ac.in</a>.</p>
                 </footer>
             </div>
         `
@@ -153,9 +153,8 @@ const emailTemplates = {
                         <a href="${data.uploadUrl || '#'}" style="background-color: #ffc107; color: #212529; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">Upload New Full Paper</a>
                     </div>
                 </div>
-                
                 <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                    <p style="color: #7f8c8d; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email.</p>
+                    <p style="color: #eb4034; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email. If you have any queries, please contact us at <a href="mailto:ictacem@aero.iitkgp.ac.in">ictacem@aero.iitkgp.ac.in</a>.</p>
                 </footer>
             </div>
         `
@@ -193,8 +192,8 @@ const emailTemplates = {
                     </div>
                 </div>
                 
-                <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                    <p style="color: #7f8c8d; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email.</p>
+              <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                    <p style="color: #eb4034; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email. If you have any queries, please contact us at <a href="mailto:ictacem@aero.iitkgp.ac.in">ictacem@aero.iitkgp.ac.in</a>.</p>
                 </footer>
             </div>
         `
@@ -228,8 +227,8 @@ const emailTemplates = {
                     </div>
                 </div>
                 
-                <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                    <p style="color: #7f8c8d; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email.</p>
+               <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                    <p style="color: #eb4034; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email. If you have any queries, please contact us at <a href="mailto:ictacem@aero.iitkgp.ac.in">ictacem@aero.iitkgp.ac.in</a>.</p>
                 </footer>
             </div>
         `
@@ -257,9 +256,8 @@ const emailTemplates = {
                     
                     <p>We appreciate your interest in ICTACEM 2025 and encourage you to consider submitting to future conferences.</p>
                 </div>
-                
-                <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                    <p style="color: #7f8c8d; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email.</p>
+               <footer style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                    <p style="color: #eb4034; font-size: 12px;">This is an automated email from ICTACEM 2025. Please do not reply to this email. If you have any queries, please contact us at <a href="mailto:ictacem@aero.iitkgp.ac.in">ictacem@aero.iitkgp.ac.in</a>.</p>
                 </footer>
             </div>
         `

@@ -76,9 +76,9 @@ class NotificationService {
             let emailData = {
                 userName: recipient.username || recipient.name || 'Valued Author',
                 dashboardUrl: `${process.env.CLIENT_URL}/profile`,
-                uploadUrl: `${process.env.CLIENT_URL}/submit-paper`,
-                scheduleUrl: `${process.env.CLIENT_URL}/schedule`,
-                paperUrl: paper ? `${process.env.CLIENT_URL}/paper/${paper._id}` : null,
+                uploadUrl: `${process.env.CLIENT_URL}/profile`,
+                scheduleUrl: `${process.env.CLIENT_URL}/profile`,
+                paperUrl: paper ? `${process.env.CLIENT_URL}/profile` : null,
                 paperTitle: paper ? paper.title : metadata.paperTitle || 'Unknown Paper',
                 ictacemId: paper ? paper.ictacemId : metadata.ictacemId || 'Unknown ID'
             };

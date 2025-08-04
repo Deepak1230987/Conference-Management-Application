@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import HeroSection from "../components/HeroSection";
 import { motion } from "framer-motion";
+import { PlaneIcon } from "lucide-react";
 
 const Home = () => {
   // Ref for intersection observer
@@ -97,7 +98,7 @@ const Home = () => {
               1998. ICTACEM Conference is aimed at bringing together
               academicians and researchers working in various disciplines of
               mechanics to exchange views as well as to share knowledge between
-              people from different parts of the globe. The 8th ICTACEM will be
+              people from different parts of the globe. The 9th ICTACEM will be
               held from December 15-17, 2025 at the Indian Institute of Technology,
               Kharagpur.
             </motion.p>
@@ -132,7 +133,7 @@ const Home = () => {
             >
               <div className="flex items-center mb-4">
                 <div className="rounded-full bg-blue-600 p-3 mr-4">
-                  <i className="ri-wind-line text-xl text-white"></i>
+                  <PlaneIcon className="ri-wind-line text-xl text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-800">
                   Aerodymanics and Fluid Mechanics

@@ -3,7 +3,7 @@ import React from "react";
 const ImportantDates = () => {
   const dates = [
     {
-      date: "April 01, 2025",
+      date: "July 21, 2025",
       event: "Opening of Extended abstract submission for paper (Online)",
       icon: "📝",
     },
@@ -13,17 +13,17 @@ const ImportantDates = () => {
       icon: "⏰",
     },
     {
-      date: "September 20, 2025",
+      date: "September 30, 2025",
       event: "Extended Abstract Acceptance Notification",
       icon: "✉️",
     },
     {
-      date: "November 22, 2025",
+      date: "October 31, 2025",
       event: "Deadline for Submission of Final Full Length Paper (online)",
       icon: "📄",
     },
     {
-      date: "November 30, 2025",
+      date: "October 31, 2025",
       event: "Registration Deadline (payment of registration fees)",
       icon: "💳",
     },
@@ -124,7 +124,7 @@ const ImportantDates = () => {
                     <span>
                       <span className="font-bold">Note:</span> No accommodation
                       is guaranteed after the registration deadline of October
-                      31, 2021. with unique design and modern amenities.
+                      31, 2025. with unique design and modern amenities.
                     </span>
                   </p>
                 </div>

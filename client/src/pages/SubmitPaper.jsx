@@ -1146,7 +1146,7 @@ const SubmitPaper = () => {
                   ></path>
                 </svg>
                 <a
-                  href="mailto:support@ictacem2025.org"
+                  href="mailto:rananandi@aero.iitkgp.ac.in"
                   className="hover:underline"
                 >
                   {" "}

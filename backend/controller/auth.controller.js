@@ -229,7 +229,7 @@ export const forgotPassword = async (req, res) => {
 
         // Try multiple email sending approaches
         const emailMessage = {
-            from: process.env.FROM_EMAIL || process.env.SMTP_USER,
+            from: `"ICTACEM 2025" <${process.env.FROM_EMAIL}>`,
             to: user.email,
             subject: 'Password Reset Request - ICTACEM 2025',
             html: `
