@@ -124,7 +124,7 @@ const ImportantDates = () => {
                     <span>
                       <span className="font-bold">Note:</span> No accommodation
                       is guaranteed after the registration deadline of October
-                      31, 2025. with unique design and modern amenities.
+                      31, 2025.
                     </span>
                   </p>
                 </div>
