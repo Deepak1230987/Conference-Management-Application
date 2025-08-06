@@ -33,7 +33,7 @@ const Navbar = () => {
     { name: "Schedule", path: "/schedule", icon: "ri-calendar-check-line" },
     { name: "Committee", path: "/committee", icon: "ri-team-line" },
     { name: "Sponsorship", path: "/sponsorship", icon: "ri-hand-heart-line" },
-    { name: "Papers Presented", path: "/papers", icon: "ri-file-list-3-line" },
+   
   ];
 
   // Handle logout using auth context

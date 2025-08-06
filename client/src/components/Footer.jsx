@@ -18,7 +18,7 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-2">
               <svg
-                className="w-4 h-4 text-green-300"
+                className="size-10 text-green-300"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -29,7 +29,8 @@ const Footer = () => {
                 />
               </svg>
               <span className="text-green-200 text-sm">
-                Conference Venue Location
+                Vikramshila Complex, Indian Institute of Technology Kharagpur
+                Kharagpur, West Bengal, India. Pin – 721 302
               </span>
             </div>
           </div>
@@ -85,9 +86,7 @@ const Footer = () => {
 
           {/* Contact & Support */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-green-100">
-              Contact us
-            </h4>
+            <h4 className="text-lg font-semibold text-green-100">Contact us</h4>
             <div className="space-y-3">
               <div className="space-y-2">
                 <div className="flex items-start space-x-2">
@@ -149,7 +148,6 @@ const Footer = () => {
                   ictacem@aero.iitkgp.ac.in
                 </a>
               </div>
-
             </div>
           </div>
         </div>
@@ -165,10 +163,10 @@ const Footer = () => {
               {new Date().getFullYear()}. All rights reserved.
             </p>
             <p className="text-green-300 text-xs mt-1">
-             International Conference on Theoretical Applied Computational and Experimental Mechanics
+              International Conference on Theoretical Applied Computational and
+              Experimental Mechanics
             </p>
           </div>
-
         </div>
       </div>
     </footer>
