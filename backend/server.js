@@ -83,6 +83,19 @@ app.get('/ictacem2025/api/extended-abstract-format', (req, res) => {
     }
 });
 
+// Specific route for sponsorship brochure with proper headers
+app.get('/ictacem2025/api/sponsorship-brochure', (req, res) => {
+    try {
+        const sponsorshipPath = path.join(__dirname, 'public/documents/ICTACEM-2025_Sponsorship_Brochure[1].pdf');
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'inline; filename="ICTACEM_2025_Sponsorship_Brochure.pdf"');
+        res.sendFile(sponsorshipPath);
+    } catch (error) {
+        console.error('Error serving sponsorship brochure:', error);
+        res.status(500).json({ message: 'Error serving sponsorship brochure file' });
+    }
+});
+
 // Mount all API routes under /ictacem2025 prefix FIRST (most specific routes first)
 app.use('/ictacem2025/api/auth', authRoutes);
 app.use('/ictacem2025/api/papers', paperRoutes);
