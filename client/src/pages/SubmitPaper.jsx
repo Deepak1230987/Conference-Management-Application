@@ -176,7 +176,7 @@ const SubmitPaper = () => {
 
     // Check if user has reached submission limit
     if (reachedSubmissionLimit) {
-      setError("You have reached the maximum limit of 2 paper submissions.");
+      setError("You have reached the maximum limit of 1 paper submission.");
       return;
     }
 
@@ -202,7 +202,6 @@ const SubmitPaper = () => {
     try {
       // Create form data
       const formData = new FormData();
-    
 
       formData.append("title", title);
       formData.append("theme", theme);
@@ -550,7 +549,6 @@ const SubmitPaper = () => {
                       has been successfully submitted. Thank you!
                     </p>
                     <div className="flex flex-col sm:flex-row w-full gap-4">
-                     
                       <button
                         onClick={handleViewSubmissions}
                         className="w-full px-6 py-3 bg-blue-600 text-gray-800 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300"
@@ -1002,6 +1000,21 @@ const SubmitPaper = () => {
                     </div>
 
                     <div className="border-t border-gray-200 pt-6 mt-6">
+                      <div className="flex items-center mb-4">
+                        <input
+                          type="checkbox"
+                          id="abstractFormat"
+                          className="h-5 w-5 text-blue-600"
+                          required
+                        />
+                        <label
+                          htmlFor="abstractFormat"
+                          className="ml-3 text-gray-700"
+                        >
+                          I confirm that I am following the abstract format as
+                          specified in the conference guidelines.
+                        </label>
+                      </div>
                       <div className="flex items-center mb-6">
                         <input
                           type="checkbox"

@@ -181,6 +181,10 @@ const Committee = () => {
           position: "Indian Institute of Science, Bangalore",
         },
         {
+          name: "Prof. Rakesh K. Kapania",
+          position: "Virginia tech, USA",
+        },
+        {
           name: "Prof. Raktim Bhattacharyya",
           position: "Texas A&M University, USA",
         },
