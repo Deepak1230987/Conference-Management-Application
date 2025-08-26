@@ -1000,32 +1000,21 @@ const SubmitPaper = () => {
                     </div>
 
                     <div className="border-t border-gray-200 pt-6 mt-6">
-                      <div className="flex items-center mb-4">
-                        <input
-                          type="checkbox"
-                          id="abstractFormat"
-                          className="h-5 w-5 text-blue-600"
-                          required
-                        />
-                        <label
-                          htmlFor="abstractFormat"
-                          className="ml-3 text-gray-700"
-                        >
-                          I confirm that I am following the abstract format as
-                          specified in the conference guidelines.
-                        </label>
-                      </div>
-                      <div className="flex items-center mb-6">
+                      <div className="flex items-start mb-6">
                         <input
                           type="checkbox"
                           id="confirm"
-                          className="h-5 w-5 text-blue-600"
+                          className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0"
                           required
                         />
-                        <label htmlFor="confirm" className="ml-3 text-gray-700">
-                          I confirm that the uploaded paper adheres to the
-                          conference guidelines and all information provided is
-                          accurate.
+                        <label
+                          htmlFor="confirm"
+                          className="ml-3 text-gray-700 leading-relaxed"
+                        >
+                          I confirm that I am following the abstract format as
+                          specified in the conference guidelines, the uploaded
+                          paper adheres to all conference guidelines, and all
+                          information provided is accurate.
                         </label>
                       </div>
                     </div>
