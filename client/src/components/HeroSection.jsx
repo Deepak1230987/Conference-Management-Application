@@ -399,12 +399,38 @@ const HeroSection = () => {
                 </p>
               </div>
 
-              <p className="text-md text-blue-200 mb-8 backdrop-blur-sm bg-black/10 p-3 rounded-lg inline-block">
+              <p className="text-md text-blue-200 mb-6 backdrop-blur-sm bg-black/10 p-3 rounded-lg inline-block">
                 <i className="ri-map-pin-line mr-1"></i>
                 Vikramshila Complex, Indian Institute of Technology Kharagpur
                 <br />
                 Kharagpur, West Bengal, India. Pin – 721 302
               </p>
+
+              {/* Publication Announcement */}
+              <div className="mb-8 p-4 rounded-xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-400/30 backdrop-blur-sm">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 mt-1">
+                    <i className="ri-book-open-line text-2xl text-emerald-400"></i>
+                  </div>
+                  <div className="text-sm text-emerald-100 leading-relaxed">
+                    <strong className="text-emerald-300">
+                      Publication Opportunity:
+                    </strong>{" "}
+                    We are pleased to announce that selected full-length papers
+                    will be published by a renowned publishing house, continuing
+                    the standard established with our{" "}
+                    <a
+                      href="https://doi.org/10.1201/9781003324539"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-300 hover:text-emerald-200 underline underline-offset-2 decoration-emerald-400/60 hover:decoration-emerald-300 transition-colors font-medium"
+                    >
+                      ICTACEM-2021 conference proceedings
+                    </a>
+                    .
+                  </div>
+                </div>
+              </div>
 
               <div className="flex flex-col sm:flex-row justify-start gap-4">
                 <button
