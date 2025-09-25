@@ -368,8 +368,20 @@ const HeroSection = () => {
           {/* Left Column - Main Conference Info */}
           <div className="order-2 md:order-1">
             <div className="backdrop-blur-xl bg-white/10 p-8 md:p-10 rounded-2xl border border-white/20 shadow-[0_10px_40px_rgb(0,0,0,0.2)] hover:shadow-[0_10px_40px_rgba(14,165,233,0.35)] transition-all duration-500">
-              <div className="inline-block text-xs font-semibold bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-4 py-1.5 rounded-full mb-6 shadow-lg animate-pulse-slow">
+              <div className="inline-block text-base md:text-lg font-extrabold bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-700 text-white px-7 py-2 rounded-full mb-4 shadow-xl animate-pulse-slow border-2 border-cyan-300/60 ring-4 ring-blue-400/30 ring-offset-2 ring-offset-slate-900 relative date-badge-glow">
                 December 15-17, 2025
+                <span className="absolute inset-0 rounded-full pointer-events-none date-badge-glow-inner"></span>
+              </div>
+
+              {/* Extended Deadline Announcement */}
+              <div className="mb-6 relative">
+                <div className="inline-flex items-center w-fit gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg border border-amber-300/50 ">
+                  <i className="ri-time-line text-lg"></i>
+                  <span>
+                    Extended! Abstract submission deadline: September 30, 2025
+                  </span>
+                  <div className="absolute -top-1 -right-0 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
+                </div>
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
@@ -400,7 +412,7 @@ const HeroSection = () => {
                   className="group bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white py-4 px-8 rounded-full font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(14,165,233,0.7)] hover:-translate-y-1 flex items-center justify-center gap-2"
                 >
                   <i className="ri-user-add-line group-hover:rotate-12 transition-transform"></i>
-                 Sign Up Now
+                  Sign Up Now
                 </button>
                 <button
                   onClick={() => navigate("/submit")}
@@ -456,7 +468,33 @@ const HeroSection = () => {
         </div>
       </div>
 
-      
+      <style jsx="true">{`
+        .date-badge-glow {
+          box-shadow: 0 0 24px 6px rgba(34, 211, 238, 0.25),
+            0 2px 16px 0 rgba(59, 130, 246, 0.18);
+          position: relative;
+          z-index: 2;
+        }
+        .date-badge-glow-inner {
+          box-shadow: 0 0 16px 4px rgba(34, 211, 238, 0.15),
+            0 0 0 4px rgba(59, 130, 246, 0.07);
+          opacity: 0.4;
+          z-index: 1;
+          pointer-events: none;
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 3s ease-in-out infinite;
+        }
+        @keyframes bounce-slow {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-3px);
+          }
+        }
+      `}</style>
     </div>
   );
 };

@@ -24,13 +24,13 @@ const Navbar = () => {
       path: "/extended-abstract-format",
       icon: "ri-file-text-line",
     },
-    { name: "Speakers", path: "/speakers", icon: "ri-user-3-line" },
+    // { name: "Speakers", path: "/speakers", icon: "ri-user-3-line" },
     {
       name: "Important Dates",
       path: "/important-dates",
       icon: "ri-calendar-2-line",
     },
-    { name: "Schedule", path: "/schedule", icon: "ri-calendar-check-line" },
+    // { name: "Schedule", path: "/schedule", icon: "ri-calendar-check-line" },
     { name: "Committee", path: "/committee", icon: "ri-team-line" },
     { name: "Sponsorship", path: "/sponsorship", icon: "ri-hand-heart-line" },
    

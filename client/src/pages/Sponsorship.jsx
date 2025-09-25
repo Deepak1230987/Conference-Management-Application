@@ -41,7 +41,7 @@ const Sponsorship = () => {
       highlight: "border-slate-500 shadow-slate-300",
       benefits: [
         "Front inner full page in colour in Book of Abstracts",
-        "4 conference registrations",
+        "4 free conference registrations",
         "1 exhibition booth",
         "Company logo on banners, website, communications",
         "Brochure/pamphlet in registration kit",
@@ -51,13 +51,13 @@ const Sponsorship = () => {
     {
       tier: "Gold",
       price: "Rs. 2,00,000",
-      icon: <Award className="w-8 h-8 text-[#FFD700]" />,
+      icon: <Award className="w-8 h-8 text-[#E5E4E2]" />,
       color: "bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600",
-      textColor: "text-[#FFD700]",
+      textColor: "text-[#E5E4E2]",
       highlight: "border-yellow-500 shadow-yellow-300",
       benefits: [
         "Back inner full page in colour in Book of Abstracts",
-        "3 conference registrations",
+        "3 free conference registrations",
         "1 exhibition booth",
         "Company logo on banners, website, communications",
         "Brochure/pamphlet in registration kit",
@@ -67,13 +67,13 @@ const Sponsorship = () => {
     {
       tier: "Silver",
       price: "Rs. 1,50,000",
-      icon: <Building2 className="w-8 h-8 text-[#C0C0C0]" />,
+      icon: <Building2 className="w-8 h-8 text-[#E5E4E2]" />,
       color: "bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600",
-      textColor: "text-[#C0C0C0]",
+      textColor: "text-[#E5E4E2]",
       highlight: "border-gray-500 shadow-gray-300",
       benefits: [
         "Full page in colour in Book of Abstracts",
-        "2 conference registrations",
+        "2 free conference registrations",
         "1 exhibition booth",
         "Company logo on banners, website, communications",
         "Brochure/pamphlet in registration kit",
@@ -82,13 +82,13 @@ const Sponsorship = () => {
     {
       tier: "Bronze",
       price: "Rs. 1,00,000",
-      icon: <Building2 className="w-8 h-8 text-[#CD7F32]" />,
+      icon: <Building2 className="w-8 h-8 text-[#E5E4E2]" />,
       color: "bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700",
-      textColor: "text-[#CD7F32]",
+      textColor: "text-[#E5E4E2]",
       highlight: "border-orange-500 shadow-orange-300",
       benefits: [
         "Half page in colour in Book of Abstracts",
-        "1 conference registration",
+        "1 free conference registration",
         "1 exhibition booth",
         "Company logo on banners, website, communications",
         "Brochure/pamphlet in registration kit",
@@ -254,7 +254,7 @@ const Sponsorship = () => {
               </h3>
               <p className="text-gray-600 mb-3">Limited to 1 sponsor</p>
               <ul className="text-sm text-gray-700 space-y-1">
-                <li>• 4 registrations</li>
+                <li>• 4 free registrations</li>
                 <li>• Brochures on dinner tables</li>
                 <li>• Banner at dinner venue</li>
                 <li>• Logo on invitation cards</li>
@@ -276,7 +276,7 @@ const Sponsorship = () => {
               </h3>
               <p className="text-gray-600 mb-3">Rs. 2,00,000 (Limited to 1)</p>
               <ul className="text-sm text-gray-700 space-y-1">
-                <li>• 2 registrations</li>
+                <li>• 2 free registrations</li>
                 <li>• Company logo on bag and stationery</li>
                 <li>• Brochures inclusion in bag</li>
               </ul>
@@ -296,7 +296,7 @@ const Sponsorship = () => {
               </h3>
               <p className="text-gray-600 mb-3">Rs. 20,000 (Limited to 6)</p>
               <ul className="text-sm text-gray-700 space-y-1">
-                <li>• 1 registration</li>
+                <li>• 1 free registration</li>
                 <li>• Banner during tea time</li>
               </ul>
             </div>
