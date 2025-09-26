@@ -378,7 +378,7 @@ const HeroSection = () => {
                 <div className="inline-flex items-center w-fit gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg border border-amber-300/50 ">
                   <i className="ri-time-line text-lg"></i>
                   <span>
-                    Extended! Abstract submission deadline: September 30, 2025
+                    Extended! Abstract submission deadline: October 15, 2025
                   </span>
                   <div className="absolute -top-1 -right-0 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
                 </div>
