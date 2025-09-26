@@ -418,16 +418,17 @@ const HeroSection = () => {
                     </strong>{" "}
                     We are pleased to announce that selected full-length papers
                     will be published by a renowned publishing house, continuing
-                    the standard established with our{" "}
+                    the standard established with our{" "} 
                     <a
                       href="https://doi.org/10.1201/9781003324539"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-emerald-300 hover:text-emerald-200 underline underline-offset-2 decoration-emerald-400/60 hover:decoration-emerald-300 transition-colors font-medium"
                     >
-                      ICTACEM-2021 conference proceedings
+                      ICTACEM-2021 conference proceedings 
+                      
                     </a>
-                    .
+                    The accepted Extended Abstracts will be compiled and published in a Book of Abstracts, with an official ISBN.
                   </div>
                 </div>
               </div>

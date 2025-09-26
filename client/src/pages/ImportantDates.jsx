@@ -8,22 +8,22 @@ const ImportantDates = () => {
       icon: "📝",
     },
     {
-      date: "September 30, 2025",
+      date: "October 15, 2025",
       event: "Deadline for Submission of Extended Abstract (online)",
       icon: "⏰",
     },
     {
-      date: "October 15, 2025",
+      date: "October 31, 2025",
       event: "Extended Abstract Acceptance Notification",
       icon: "✉️",
     },
     {
-      date: "October 31, 2025",
+      date: "November 15, 2025",
       event: "Deadline for Submission of Final Full Length Paper (online)",
       icon: "📄",
     },
     {
-      date: "October 31, 2025",
+      date: "November 15, 2025",
       event: "Registration Deadline (payment of registration fees)",
       icon: "💳",
     },
