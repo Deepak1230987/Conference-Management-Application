@@ -24,6 +24,7 @@ import PaperDetailsPage from "./components/admin/PaperDetailsPage";
 import SubmissionHistoryModal from "./components/admin/SubmissionHistoryModal";
 import Brouchure from "./pages/Brouchure";
 import ExtendedAbstractFormat from "./pages/ExtendedAbstractFormat";
+import FullLengthPaperFormat from "./pages/FullLengthPaperFormat";
 
 function App() {
   return (
@@ -65,6 +66,10 @@ function App() {
               <Route
                 path="/extended-abstract-format"
                 element={<ExtendedAbstractFormat />}
+              />
+              <Route
+                path="/full-length-paper-format"
+                element={<FullLengthPaperFormat />}
               />
               <Route path="/committee" element={<Committee />} />
 

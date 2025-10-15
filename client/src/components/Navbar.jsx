@@ -24,6 +24,11 @@ const Navbar = () => {
       path: "/extended-abstract-format",
       icon: "ri-file-text-line",
     },
+    {
+      name: "Full-Length Paper Format",
+      path: "/full-length-paper-format",
+      icon: "ri-file-list-3-line",
+    },
     // { name: "Speakers", path: "/speakers", icon: "ri-user-3-line" },
     {
       name: "Important Dates",
@@ -33,7 +38,6 @@ const Navbar = () => {
     // { name: "Schedule", path: "/schedule", icon: "ri-calendar-check-line" },
     { name: "Committee", path: "/committee", icon: "ri-team-line" },
     { name: "Sponsorship", path: "/sponsorship", icon: "ri-hand-heart-line" },
-   
   ];
 
   // Handle logout using auth context
@@ -160,8 +164,6 @@ const Navbar = () => {
 
                       {/* Notification Dropdown */}
                       <NotificationDropdown />
-
-                    
 
                       <button
                         onClick={() => navigate("/profile")}

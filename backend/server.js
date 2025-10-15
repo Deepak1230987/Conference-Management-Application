@@ -83,6 +83,19 @@ app.get('/ictacem2025/api/extended-abstract-format', (req, res) => {
     }
 });
 
+// Specific route for full-length paper format with proper headers
+app.get('/ictacem2025/api/full-length-paper-format', (req, res) => {
+    try {
+        const formatPath = path.join(__dirname, 'public/documents/ICTACEM2025_Full_Length_Template.pdf');
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'inline; filename="ICTACEM_2025_Full_Length_Paper_Format.pdf"');
+        res.sendFile(formatPath);
+    } catch (error) {
+        console.error('Error serving full-length paper format:', error);
+        res.status(500).json({ message: 'Error serving full-length paper format file' });
+    }
+});
+
 // Specific route for sponsorship brochure with proper headers
 app.get('/ictacem2025/api/sponsorship-brochure', (req, res) => {
     try {
