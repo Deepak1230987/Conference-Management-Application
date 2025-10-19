@@ -374,7 +374,7 @@ const HeroSection = () => {
               </div>
 
               {/* Extended Deadline Announcement */}
-              <div className="mb-6 relative">
+              {/* <div className="mb-6 relative">
                 <div className="inline-flex items-center w-fit gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg border border-amber-300/50 ">
                   <i className="ri-time-line text-lg"></i>
                   <span>
@@ -382,7 +382,7 @@ const HeroSection = () => {
                   </span>
                   <div className="absolute -top-1 -right-0 w-3 h-3 bg-red-500 rounded-full animate-ping"></div>
                 </div>
-              </div>
+              </div> */}
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
                 <span className="bg-gradient-to-r from-sky-400 via-cyan-300 to-blue-500 text-transparent bg-clip-text relative">
