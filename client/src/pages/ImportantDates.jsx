@@ -18,14 +18,19 @@ const ImportantDates = () => {
       icon: "✉️",
     },
     {
-      date: "November 15, 2025",
+      date: "December 10, 2025",
       event: "Deadline for Submission of Final Full Length Paper (online)",
       icon: "📄",
     },
     {
-      date: "November 15, 2025",
-      event: "Registration Deadline (payment of registration fees)",
+      date: "September 01 - November 15, 2025",
+      event: "Early Bird Registration",
       icon: "💳",
+    },
+    {
+      date: "November 16 onwards",
+      event: "Late Registration",
+      icon: "💵",
     },
     {
       date: "December 15-17, 2025",

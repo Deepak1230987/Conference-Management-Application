@@ -373,6 +373,17 @@ const HeroSection = () => {
                 <span className="absolute inset-0 rounded-full pointer-events-none date-badge-glow-inner"></span>
               </div>
 
+              {/* Early Bird Pricing Announcement */}
+              <div className="mb-6 relative">
+                <div className="inline-flex items-center w-fit gap-2 bg-gradient-to-r from-orange-500 via-red-500 to-pink-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg border border-orange-300/50 ">
+                  <i className="ri-money-dollar-circle-line text-lg"></i>
+                  <span>
+                    The exclusive Early Bird registration rate is valid for all payments received on or before November 15, 2025 
+                  </span>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
+                </div>
+              </div>
+
               {/* Extended Deadline Announcement */}
               {/* <div className="mb-6 relative">
                 <div className="inline-flex items-center w-fit gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg border border-amber-300/50 ">
@@ -418,17 +429,17 @@ const HeroSection = () => {
                     </strong>{" "}
                     We are pleased to announce that selected full-length papers
                     will be published by a renowned publishing house, continuing
-                    the standard established with our{" "} 
+                    the standard established with our{" "}
                     <a
                       href="https://doi.org/10.1201/9781003324539"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-emerald-300 hover:text-emerald-200 underline underline-offset-2 decoration-emerald-400/60 hover:decoration-emerald-300 transition-colors font-medium"
                     >
-                      ICTACEM-2021 conference proceedings 
-                      
+                      ICTACEM-2021 conference proceedings
                     </a>
-                    The accepted Extended Abstracts will be compiled and published in a Book of Abstracts, with an official ISBN.
+                    The accepted Extended Abstracts will be compiled and
+                    published in a Book of Abstracts, with an official ISBN.
                   </div>
                 </div>
               </div>
