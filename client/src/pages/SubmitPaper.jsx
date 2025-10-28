@@ -3,6 +3,9 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+// Toggle to control paper submission availability
+const PAPER_SUBMISSION_OPEN = false; // Set to false to disable paper submissions
+
 const SubmitPaper = () => {
   const { user, isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();
@@ -321,6 +324,43 @@ const SubmitPaper = () => {
           >
             Go to Login
           </button>
+        </div>
+      </div>
+    );
+  }
+
+  // If paper submission is closed, show closed message
+  if (!PAPER_SUBMISSION_OPEN) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 flex items-center justify-center">
+        <div className="container mx-auto px-4 max-w-2xl text-center">
+          <div className="bg-white rounded-2xl shadow-xl p-12">
+            <div className="mb-6">
+              <i className="ri-file-paper-2-line text-6xl text-gray-400 mb-4"></i>
+            </div>
+            <h1 className="text-3xl font-bold text-gray-800 mb-4">
+              Paper Submission Closed
+            </h1>
+            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              Thank you for your interest in ICTACEM 2025. The paper submission
+              deadline has passed and we are no longer accepting new
+              submissions.
+            </p>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+              <p className="text-blue-800 text-sm">
+                <i className="ri-information-line mr-2"></i>
+                For any queries regarding your existing submissions, please
+                contact the organizing committee.
+              </p>
+            </div>
+            <button
+              onClick={() => navigate("/")}
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-lg"
+            >
+              <i className="ri-home-line mr-2"></i>
+              Back to Home
+            </button>
+          </div>
         </div>
       </div>
     );
