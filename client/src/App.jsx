@@ -25,6 +25,7 @@ import SubmissionHistoryModal from "./components/admin/SubmissionHistoryModal";
 import Brouchure from "./pages/Brouchure";
 import ExtendedAbstractFormat from "./pages/ExtendedAbstractFormat";
 import FullLengthPaperFormat from "./pages/FullLengthPaperFormat";
+import PaymentProcedure from "./pages/PaymentProcedure";
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
                 path="/full-length-paper-format"
                 element={<FullLengthPaperFormat />}
               />
+              <Route path="/payment-procedure" element={<PaymentProcedure />} />
               <Route path="/committee" element={<Committee />} />
 
               {/* Admin routes */}

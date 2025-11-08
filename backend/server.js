@@ -109,6 +109,19 @@ app.get('/ictacem2025/api/sponsorship-brochure', (req, res) => {
     }
 });
 
+// Specific route for payment procedure with proper headers
+app.get('/ictacem2025/api/payment-procedure', (req, res) => {
+    try {
+        const paymentPath = path.join(__dirname, 'public/documents/PaymentProcedurePreview.pdf');
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'inline; filename="ICTACEM_2025_Payment_Procedure.pdf"');
+        res.sendFile(paymentPath);
+    } catch (error) {
+        console.error('Error serving payment procedure:', error);
+        res.status(500).json({ message: 'Error serving payment procedure file' });
+    }
+});
+
 // Mount all API routes under /ictacem2025 prefix FIRST (most specific routes first)
 app.use('/ictacem2025/api/auth', authRoutes);
 app.use('/ictacem2025/api/papers', paperRoutes);

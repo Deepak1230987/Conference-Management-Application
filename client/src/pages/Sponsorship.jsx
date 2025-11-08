@@ -108,7 +108,7 @@ const Sponsorship = () => {
             IIT Kharagpur | December 15-17, 2025
           </p>
           <p className="text-lg mt-2 text-gray-500">
-            International Conference on Theoretical, Applied, Computational and
+            International Conference on Theoretical Applied Computational and
             Experimental Mechanics
           </p>
         </div>

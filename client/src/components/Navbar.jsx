@@ -29,6 +29,11 @@ const Navbar = () => {
       path: "/full-length-paper-format",
       icon: "ri-file-list-3-line",
     },
+    {
+      name: "Payment Procedure",
+      path: "/payment-procedure",
+      icon: "ri-bank-card-line",
+    },
     // { name: "Speakers", path: "/speakers", icon: "ri-user-3-line" },
     {
       name: "Important Dates",
