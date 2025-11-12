@@ -9,6 +9,7 @@ import adminRoutes from './routes/admin.route.js';
 import chatRoutes from './routes/chat.route.js';
 import notificationRoutes from './routes/notification.route.js';
 import emailTestRoutes from './routes/email-test.route.js';
+import sponsorsRoutes from './routes/sponsors.route.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -122,12 +123,26 @@ app.get('/ictacem2025/api/payment-procedure', (req, res) => {
     }
 });
 
+// Specific route for book of abstracts with proper headers
+app.get('/ictacem2025/api/book-of-abstracts', (req, res) => {
+    try {
+        const bookPath = path.join(__dirname, 'public/documents/Technical Program and Book of Abstracts ICTACEM-2025.pdf');
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'inline; filename="ICTACEM_2025_Book_of_Abstracts.pdf"');
+        res.sendFile(bookPath);
+    } catch (error) {
+        console.error('Error serving book of abstracts:', error);
+        res.status(500).json({ message: 'Error serving book of abstracts file' });
+    }
+});
+
 // Mount all API routes under /ictacem2025 prefix FIRST (most specific routes first)
 app.use('/ictacem2025/api/auth', authRoutes);
 app.use('/ictacem2025/api/papers', paperRoutes);
 app.use('/ictacem2025/api/admin', adminRoutes);
 app.use('/ictacem2025/api/chat', chatRoutes);
 app.use('/ictacem2025/api/notifications', notificationRoutes);
+app.use('/ictacem2025/api/sponsors', sponsorsRoutes);
 
 
 // Also keep the original routes for backward compatibility
@@ -136,6 +151,7 @@ app.use('/api/papers', paperRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/notifications', notificationRoutes);
+app.use('/api/sponsors', sponsorsRoutes);
 
 
 

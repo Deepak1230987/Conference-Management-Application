@@ -15,34 +15,65 @@ const Navbar = () => {
   // Check for admin role in both possible locations
   const isAdmin = user?.role === "admin" || user?.user?.role === "admin";
 
-  // All navigation links in a single array
+  // All navigation links organized in logical groups
   const navLinks = [
-    { name: "Home", path: "/", icon: "ri-home-4-line" },
-    { name: "Brochure", path: "/brochure", icon: "ri-book-open-line" },
+    // Core Pages
     {
-      name: "Extended Abstract Format",
-      path: "/extended-abstract-format",
-      icon: "ri-file-text-line",
+      name: "Home",
+      path: "/",
+      icon: "ri-home-4-line",
     },
+
+    // Conference Information & Documents
     {
-      name: "Full-Length Paper Format",
-      path: "/full-length-paper-format",
-      icon: "ri-file-list-3-line",
+      name: "Brochure",
+      path: "/brochure",
+      icon: "ri-book-open-line",
     },
-    {
-      name: "Payment Procedure",
-      path: "/payment-procedure",
-      icon: "ri-bank-card-line",
-    },
-    // { name: "Speakers", path: "/speakers", icon: "ri-user-3-line" },
     {
       name: "Important Dates",
       path: "/important-dates",
       icon: "ri-calendar-2-line",
     },
-    // { name: "Schedule", path: "/schedule", icon: "ri-calendar-check-line" },
-    { name: "Committee", path: "/committee", icon: "ri-team-line" },
-    { name: "Sponsorship", path: "/sponsorship", icon: "ri-hand-heart-line" },
+    {
+      name: "Committee",
+      path: "/committee",
+      icon: "ri-team-line",
+    },
+
+    // Submission & Publication
+    {
+      name: "Abstract Format",
+      path: "/extended-abstract-format",
+      icon: "ri-file-text-line",
+    },
+    {
+      name: "Paper Format",
+      path: "/full-length-paper-format",
+      icon: "ri-file-list-3-line",
+    },
+    // {
+    //   name: "Book of Abstracts",
+    //   path: "/book-of-abstracts",
+    //   icon: "ri-book-read-line",
+    // },
+
+    // Financial & Partnership
+    {
+      name: "Payment Info",
+      path: "/payment-procedure",
+      icon: "ri-bank-card-line",
+    },
+    {
+      name: "Sponsorship",
+      path: "/sponsorship",
+      icon: "ri-hand-heart-line",
+    },
+    // {
+    //   name: "Sponsors",
+    //   path: "/sponsors",
+    //   icon: "ri-building-line",
+    // },
   ];
 
   // Handle logout using auth context

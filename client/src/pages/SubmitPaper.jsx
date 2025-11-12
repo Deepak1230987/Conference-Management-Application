@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Toggle to control paper submission availability
-const PAPER_SUBMISSION_OPEN = true; // Set to false to disable paper submissions
+const PAPER_SUBMISSION_OPEN = false; // Set to false to disable paper submissions
 
 const SubmitPaper = () => {
   const { user, isAuthenticated, loading } = useAuth();

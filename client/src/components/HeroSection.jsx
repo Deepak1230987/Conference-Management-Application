@@ -6,10 +6,31 @@ const HeroSection = () => {
   const canvasRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [sponsors, setSponsors] = useState([]);
+
+  // Fetch sponsors from API
+  const fetchSponsors = async () => {
+    try {
+      const response = await fetch("/ictacem2025/api/sponsors/home?limit=4");
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          setSponsors(data.sponsors);
+        }
+      }
+    } catch (error) {
+      console.log("Error fetching sponsors:", error);
+      // Fallback to empty array if API fails
+      setSponsors([]);
+    }
+  };
 
   // Background animation
   useEffect(() => {
     setIsVisible(true);
+
+    // Fetch sponsors
+    fetchSponsors();
 
     // Mark component as loaded after short delay for entrance animations
     setTimeout(() => {
@@ -378,7 +399,8 @@ const HeroSection = () => {
                 <div className="inline-flex items-center w-fit gap-2 bg-gradient-to-r from-orange-500 via-red-500 to-pink-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg border border-orange-300/50 ">
                   <i className="ri-money-dollar-circle-line text-lg"></i>
                   <span>
-                    The exclusive Early Bird registration rate is valid for all payments received on or before November 15, 2025 
+                    The exclusive Early Bird registration rate is valid for all
+                    payments received on or before November 15, 2025
                   </span>
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
                 </div>
@@ -463,12 +485,79 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Column - 3D Element */}
-          <div className="order-1 md:order-2 flex justify-center">
+          {/* Right Column - Sponsors and 3D Element */}
+          <div className="order-1 md:order-2 flex flex-col justify-center space-y-6">
+            {/* Sponsors Section */}
+            <div
+              className={`transition-all duration-1000 ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: "0.6s" }}
+            >
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-center text-blue-100 mb-4">
+                  Proudly Supported By
+                </h3>
+
+                {/* Sponsor Logos Grid - Dynamic */}
+                {sponsors.length > 0 ? (
+                  <div className="grid grid-cols-2 gap-4">
+                    {sponsors.map((sponsor, index) => (
+                      <div
+                        key={sponsor.id || index}
+                        className="flex justify-center"
+                      >
+                        <div className="bg-white/95 backdrop-blur-sm p-1 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full max-w-[140px]">
+                          <img
+                            src={sponsor.url}
+                            alt={sponsor.name || "Conference Sponsor"}
+                            className="w-full h-full object-contain"
+                            onLoad={(e) => {
+                              console.log(
+                                "Sponsor image loaded successfully:",
+                                e.target.src
+                              );
+                            }}
+                            onError={(e) => {
+                              console.log(
+                                "Failed to load sponsor image:",
+                                e.target.src
+                              );
+                              e.target.parentElement.parentElement.style.display =
+                                "none";
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center text-blue-200 text-sm">
+                    Loading sponsors...
+                  </div>
+                )}
+
+                {/* View All Sponsors Link */}
+                {/* <div className="text-center mt-3">
+                  <button
+                    onClick={() => navigate("/sponsors")}
+                    className="text-blue-200 hover:text-white text-xs font-medium transition-colors duration-200 flex items-center justify-center gap-1"
+                  >
+                    <span>View All Sponsors</span>
+                    <i className="ri-arrow-right-line text-xs"></i>
+                  </button>
+                </div> */}
+              </div>
+            </div>
+
+            {/* 3D Element */}
             <div
               className={`relative w-full max-w-md aspect-square transition-all duration-1000 ${
                 isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
               }`}
+              style={{ transitionDelay: "0.8s" }}
             >
               {/* Orbital rings with enhanced glow effects */}
               <div className="absolute inset-0 flex items-center justify-center">

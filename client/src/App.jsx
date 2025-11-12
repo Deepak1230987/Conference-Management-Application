@@ -26,6 +26,8 @@ import Brouchure from "./pages/Brouchure";
 import ExtendedAbstractFormat from "./pages/ExtendedAbstractFormat";
 import FullLengthPaperFormat from "./pages/FullLengthPaperFormat";
 import PaymentProcedure from "./pages/PaymentProcedure";
+import Sponsors from "./pages/Sponsors";
+import BookOfAbstracts from "./pages/BookOfAbstracts";
 
 function App() {
   return (
@@ -73,6 +75,8 @@ function App() {
                 element={<FullLengthPaperFormat />}
               />
               <Route path="/payment-procedure" element={<PaymentProcedure />} />
+              <Route path="/book-of-abstracts" element={<BookOfAbstracts />} />
+              <Route path="/sponsors" element={<Sponsors />} />
               <Route path="/committee" element={<Committee />} />
 
               {/* Admin routes */}
