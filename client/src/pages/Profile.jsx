@@ -27,18 +27,18 @@ const Profile = () => {
   // Fetch unread message counts - using useCallback for proper dependency management
   const fetchUnreadCounts = useCallback(async () => {
     try {
-      console.log("Making API call to fetch unread counts...");
+      // console.log("Making API call to fetch unread counts...");
       const response = await fetch("/ictacem2025/api/chat/unread-counts", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
 
-      console.log("API response:", response);
+      // console.log("API response:", response);
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Fetched unread counts:", data);
+        // console.log("Fetched unread counts:", data);
 
         if (data.success) {
           // Create a map of paper IDs to their unread counts
@@ -46,8 +46,8 @@ const Profile = () => {
           data.unreadSummary.forEach((item) => {
             unreadMap[item.paperId] = item.unreadCount;
           });
-          console.log("Unread counts map:", unreadMap);
-          console.log("Total unread messages:", data.totalUnread);
+          // console.log("Unread counts map:", unreadMap);
+          // console.log("Total unread messages:", data.totalUnread);
 
           setUnreadCounts(unreadMap);
           setTotalUnreadMessages(data.totalUnread);
@@ -106,10 +106,10 @@ const Profile = () => {
       return;
     }
 
-    console.log("Setting up unread counts polling for user:", user.username);
+    // console.log("Setting up unread counts polling for user:", user.username);
 
     const interval = setInterval(() => {
-      console.log("Polling for unread counts...");
+      // console.log("Polling for unread counts...");
       fetchUnreadCounts();
     }, 30000); // 30 seconds
 

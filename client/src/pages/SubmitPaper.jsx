@@ -214,7 +214,7 @@ const SubmitPaper = () => {
       formData.append("paperPdf", pdfFile);
 
       // Debug FormData contents
-      console.log("FormData contents:");
+      // console.log("FormData contents:");
       for (let [key, value] of formData.entries()) {
         console.log(`${key}:`, value);
       }

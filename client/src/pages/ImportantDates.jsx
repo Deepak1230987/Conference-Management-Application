@@ -23,12 +23,12 @@ const ImportantDates = () => {
       icon: "📄",
     },
     {
-      date: "September 01 - November 15, 2025",
+      date: "September 01 - November 21, 2025",
       event: "Early Bird Registration",
       icon: "💳",
     },
     {
-      date: "November 16 onwards",
+      date: "November 22 onwards",
       event: "Late Registration",
       icon: "💵",
     },

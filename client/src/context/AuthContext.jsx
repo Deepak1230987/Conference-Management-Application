@@ -30,8 +30,8 @@ export const AuthProvider = ({ children }) => {
         if (res.data) {
           // Ensure role is available directly on the user object
           setUser(res.data);
-          console.log("User authenticated:", res.data);
-          console.log("User role:", res.data.role);
+          // console.log("User authenticated:", res.data);
+          // console.log("User role:", res.data.role);
         }
       } catch (err) {
         // User is not logged in or token is invalid - this is not an error case
@@ -58,9 +58,9 @@ export const AuthProvider = ({ children }) => {
 
       // Ensure role is directly accessible
       setUser(res.data);
-      console.log("Login successful, user data:", res.data);
-      console.log("User role after login:", res.data.role);
-      return res.data;
+      // console.log("Login successful, user data:", res.data);
+      // console.log("User role after login:", res.data.role);
+      // return res.data;
     } catch (err) {
       setError(err.response?.data?.message || "Failed to login");
       throw err;

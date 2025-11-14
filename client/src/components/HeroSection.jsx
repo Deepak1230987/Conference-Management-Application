@@ -400,7 +400,7 @@ const HeroSection = () => {
                   <i className="ri-money-dollar-circle-line text-lg"></i>
                   <span>
                     The exclusive Early Bird registration rate is valid for all
-                    payments received on or before November 15, 2025
+                    payments received on or before November 21, 2025
                   </span>
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
                 </div>
@@ -514,12 +514,7 @@ const HeroSection = () => {
                             src={sponsor.url}
                             alt={sponsor.name || "Conference Sponsor"}
                             className="w-full h-full object-contain"
-                            onLoad={(e) => {
-                              console.log(
-                                "Sponsor image loaded successfully:",
-                                e.target.src
-                              );
-                            }}
+                           
                             onError={(e) => {
                               console.log(
                                 "Failed to load sponsor image:",
