@@ -149,16 +149,16 @@ app.get('/ictacem2025/api/payment-procedure', (req, res) => {
     }
 });
 
-// Specific route for book of abstracts with proper headers
+// Specific route for technical schedule with proper headers
 app.get('/ictacem2025/api/book-of-abstracts', (req, res) => {
     try {
-        const bookPath = path.join(__dirname, 'public/documents/Technical Program and Book of Abstracts ICTACEM-2025.pdf');
+        const schedulePath = path.join(__dirname, 'public/documents/Technical Schedule.pdf');
         res.setHeader('Content-Type', 'application/pdf');
-        res.setHeader('Content-Disposition', 'inline; filename="ICTACEM_2025_Book_of_Abstracts.pdf"');
-        res.sendFile(bookPath);
+        res.setHeader('Content-Disposition', 'inline; filename="ICTACEM_2025_Technical_Schedule.pdf"');
+        res.sendFile(schedulePath);
     } catch (error) {
-        console.error('Error serving book of abstracts:', error);
-        res.status(500).json({ message: 'Error serving book of abstracts file' });
+        console.error('Error serving technical schedule:', error);
+        res.status(500).json({ message: 'Error serving technical schedule file' });
     }
 });
 

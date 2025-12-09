@@ -394,15 +394,27 @@ const HeroSection = () => {
                 <span className="absolute inset-0 rounded-full pointer-events-none date-badge-glow-inner"></span>
               </div>
 
-              {/* Early Bird Pricing Announcement */}
-              <div className="mb-6 relative">
-                <div className="inline-flex items-center w-fit gap-2 bg-gradient-to-r from-orange-500 via-red-500 to-pink-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg border border-orange-300/50 ">
-                  <i className="ri-money-dollar-circle-line text-lg"></i>
-                  <span>
-                    The exclusive Early Bird registration rate is valid for all
-                    payments received on or before November 21, 2025
-                  </span>
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
+              {/* Technical schedules announcement */}
+              <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-400/30 backdrop-blur-sm hover:shadow-lg transition-shadow duration-300">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 mt-1">
+                    <i className="ri-calendar-event-line text-2xl text-yellow-400"></i>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-white mb-1">
+                      Technical Schedule Released
+                    </h4>
+                    <p className="text-gray-200 mb-2">
+                      The technical schedule for ICTACEM 2025 is now available.
+                    </p>
+                    <button
+                      onClick={() => navigate("/book-of-abstracts")}
+                      className="inline-flex items-center gap-2 text-yellow-300 hover:text-yellow-200 font-semibold text-sm transition-colors duration-200"
+                    >
+                      <span>View Technical Schedule</span>
+                      <i className="ri-arrow-right-line"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -514,7 +526,6 @@ const HeroSection = () => {
                             src={sponsor.url}
                             alt={sponsor.name || "Conference Sponsor"}
                             className="w-full h-full object-contain"
-                           
                             onError={(e) => {
                               console.log(
                                 "Failed to load sponsor image:",

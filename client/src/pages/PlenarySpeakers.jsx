@@ -227,7 +227,7 @@ const PlenarySpeakers = () => {
                         <span
                           className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${
                             isChiefGuest
-                              ? "bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 text-slate-900 shadow-lg shadow-yellow-500/50 animate-pulse"
+                              ? "bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-500 text-slate-900 shadow-lg shadow-yellow-500/50 "
                               : `bg-gradient-to-r ${style.bg} text-white`
                           }`}
                         >

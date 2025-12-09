@@ -6,13 +6,12 @@ const BookOfAbstracts = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const bookPath =
-    "/ictacem2025/api/documents/Technical Program and Book of Abstracts ICTACEM-2025.pdf";
+  const bookPath = "/ictacem2025/api/documents/Technical Schedule.pdf";
 
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = bookPath;
-    link.download = "ICTACEM_2025_Book_of_Abstracts.pdf";
+    link.download = "ICTACEM_2025_Technical_Schedule.pdf";
     link.target = "_blank";
     document.body.appendChild(link);
     link.click();
@@ -42,16 +41,15 @@ const BookOfAbstracts = () => {
           </button>
 
           <div className="mb-6">
-            <i className="ri-book-open-line text-6xl text-emerald-200 mb-4"></i>
+            <i className="ri-calendar-schedule-line text-6xl text-emerald-200 mb-4"></i>
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Book of Abstracts
+            Technical Schedule
           </h1>
           <p className="text-xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">
-            Technical Program and Book of Abstracts for ICTACEM 2025 - Complete
-            collection of all accepted extended abstracts and conference
-            schedule
+            Complete Technical Program for ICTACEM 2025 - Detailed schedule with
+            all sessions, presentations, and conference events
           </p>
         </div>
       </div>
@@ -83,45 +81,45 @@ const BookOfAbstracts = () => {
             <div className="bg-white rounded-xl shadow-lg p-6 border border-emerald-100">
               <div className="flex items-center mb-4">
                 <div className="p-3 bg-emerald-100 rounded-lg mr-4">
-                  <i className="ri-file-list-3-line text-2xl text-emerald-600"></i>
+                  <i className="ri-calendar-line text-2xl text-emerald-600"></i>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800">
-                  Technical Program
+                  Session Schedule
                 </h3>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                Complete conference schedule with session details, presentation
-                timings, and speaker information.
+                Day-wise breakdown of all conference sessions with precise
+                timings and venue information.
               </p>
             </div>
 
             <div className="bg-white rounded-xl shadow-lg p-6 border border-teal-100">
               <div className="flex items-center mb-4">
                 <div className="p-3 bg-teal-100 rounded-lg mr-4">
-                  <i className="ri-article-line text-2xl text-teal-600"></i>
+                  <i className="ri-presentation-line text-2xl text-teal-600"></i>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800">
-                  Extended Abstracts
+                  Presentations
                 </h3>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                Collection of all accepted extended abstracts from researchers
-                worldwide, categorized by themes.
+                Complete list of all presentations, keynotes, and plenary
+                sessions with speaker names and topics.
               </p>
             </div>
 
             <div className="bg-white rounded-xl shadow-lg p-6 border border-cyan-100">
               <div className="flex items-center mb-4">
                 <div className="p-3 bg-cyan-100 rounded-lg mr-4">
-                  <i className="ri-search-line text-2xl text-cyan-600"></i>
+                  <i className="ri-map-pin-line text-2xl text-cyan-600"></i>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800">
-                  Easy Navigation
+                  Venue Details
                 </h3>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                Organized with clear sections, table of contents, and indexed
-                for easy reference during the conference.
+                Detailed information about session venues, rooms, and locations
+                throughout the conference facility.
               </p>
             </div>
           </div>
@@ -130,12 +128,12 @@ const BookOfAbstracts = () => {
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
             <div className="bg-gradient-to-r from-emerald-50 to-teal-50 p-4 border-b border-gray-200">
               <h2 className="text-2xl font-semibold text-gray-800 flex items-center">
-                <i className="ri-file-pdf-line text-emerald-600 mr-3 text-3xl"></i>
-                Technical Program and Book of Abstracts
+                <i className="ri-calendar-event-line text-emerald-600 mr-3 text-3xl"></i>
+                Conference Technical Schedule
               </h2>
               <p className="text-gray-600 mt-2">
-                Complete proceedings document with all conference abstracts and
-                schedule
+                Comprehensive program with all sessions, presentations, timings,
+                and venue details
               </p>
             </div>
 
@@ -146,7 +144,7 @@ const BookOfAbstracts = () => {
                   <div className="text-center">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
                     <p className="text-gray-600">
-                      Loading book of abstracts...
+                      Loading technical schedule...
                     </p>
                   </div>
                 </div>
@@ -163,7 +161,7 @@ const BookOfAbstracts = () => {
                       Unable to Load Document
                     </h3>
                     <p className="text-gray-600 mb-6">
-                      There was an issue loading the book of abstracts. Please
+                      There was an issue loading the technical schedule. Please
                       try downloading it directly.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -191,7 +189,7 @@ const BookOfAbstracts = () => {
                 <iframe
                   src={bookPath}
                   className="w-full h-screen border-0"
-                  title="Book of Abstracts Document"
+                  title="Technical Schedule Document"
                   onLoad={handlePdfLoad}
                   onError={handlePdfError}
                   style={{ display: isLoading ? "none" : "block" }}
@@ -208,29 +206,29 @@ const BookOfAbstracts = () => {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                  About This Document
+                  About This Schedule
                 </h3>
                 <div className="text-gray-600 space-y-2 text-sm">
                   <p className="flex items-start">
                     <i className="ri-arrow-right-s-line text-emerald-500 mt-0.5 mr-1 flex-shrink-0"></i>
-                    This document contains the complete technical program for
-                    ICTACEM 2025, including all session schedules, presentation
-                    timings, and speaker information.
+                    This document contains the complete technical schedule for
+                    ICTACEM 2025, including all parallel sessions, keynote
+                    talks, and plenary presentations.
                   </p>
                   <p className="flex items-start">
                     <i className="ri-arrow-right-s-line text-emerald-500 mt-0.5 mr-1 flex-shrink-0"></i>
-                    All accepted extended abstracts are included, organized by
-                    conference themes and research areas.
+                    Each session includes precise timing, venue location,
+                    session chairs, and list of presentations with authors.
                   </p>
                   <p className="flex items-start">
                     <i className="ri-arrow-right-s-line text-emerald-500 mt-0.5 mr-1 flex-shrink-0"></i>
-                    Use this document to plan your conference attendance and
-                    identify presentations of interest.
+                    Use this schedule to plan your conference participation and
+                    navigate between different sessions and venues.
                   </p>
                   <p className="flex items-start">
                     <i className="ri-arrow-right-s-line text-emerald-500 mt-0.5 mr-1 flex-shrink-0"></i>
-                    The document will be updated if there are any changes to the
-                    program or additional abstracts.
+                    Please check for any last-minute updates or changes
+                    announced at the registration desk during the conference.
                   </p>
                 </div>
               </div>
@@ -264,7 +262,7 @@ const BookOfAbstracts = () => {
                 Need Help?
               </h3>
               <p className="text-sm text-gray-600 mb-3">
-                If you have any questions about the book of abstracts or need
+                If you have any questions about the technical schedule or need
                 assistance accessing the document, please contact us.
               </p>
               <button
