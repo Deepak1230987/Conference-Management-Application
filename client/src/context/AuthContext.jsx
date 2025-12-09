@@ -56,6 +56,12 @@ export const AuthProvider = ({ children }) => {
         }
       );
 
+      // Store token in localStorage as fallback for cross-network requests
+      if (res.data.token) {
+        localStorage.setItem("token", res.data.token);
+        console.log("Token stored in localStorage for cross-network support");
+      }
+
       // Ensure role is directly accessible
       setUser(res.data);
       // console.log("Login successful, user data:", res.data);
@@ -74,6 +80,12 @@ export const AuthProvider = ({ children }) => {
       const res = await axios.post("/api/auth/register", userData, {
         withCredentials: true,
       });
+
+      // Store token in localStorage as fallback for cross-network requests
+      if (res.data.token) {
+        localStorage.setItem("token", res.data.token);
+        console.log("Token stored in localStorage for cross-network support");
+      }
 
       setUser(res.data);
       console.log("Registration successful, user data:", res.data);
@@ -95,6 +107,10 @@ export const AuthProvider = ({ children }) => {
           withCredentials: true,
         }
       );
+
+      // Clear token from localStorage
+      localStorage.removeItem("token");
+      console.log("Token removed from localStorage");
 
       setUser(null);
       return { success: true };

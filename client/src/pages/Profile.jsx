@@ -168,10 +168,25 @@ const Profile = () => {
     try {
       setUpdatingPayment(paperId);
 
-      // Call API to update payment ID
-      await axios.patch(`/api/papers/${paperId}/payment`, {
-        paymentId: paymentId,
-      });
+      // Get token from localStorage as fallback
+      const token = localStorage.getItem("token");
+
+      // Call API to update payment ID with proper headers (using POST instead of PATCH for Apache compatibility)
+      const response = await axios.post(
+        `/api/papers/${paperId}/payment`,
+        {
+          paymentId: paymentId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            ...(token && { Authorization: `Bearer ${token}` }),
+          },
+          withCredentials: true, // Send cookies
+        }
+      );
+
+      console.log("Payment update response:", response.data);
 
       // Update papers list with new payment ID
       setPapers((prevPapers) =>
@@ -200,9 +215,30 @@ const Profile = () => {
       setShowFullPaperPrompt(paperId);
     } catch (err) {
       console.error("Error updating payment ID:", err);
+
+      // Enhanced error logging
+      if (err.response) {
+        console.error("Response error:", {
+          status: err.response.status,
+          data: err.response.data,
+          headers: err.response.headers,
+        });
+      } else if (err.request) {
+        console.error("Request error (no response received):", err.request);
+        console.error("This usually indicates a network/connection issue");
+      } else {
+        console.error("Error details:", err.message);
+      }
+
+      // User-friendly error message
+      const errorMessage =
+        err.response?.data?.message ||
+        err.message ||
+        "Failed to update payment ID. Please check your connection and try again.";
+
       setNotification({
         type: "error",
-        message: "Failed to update payment ID. Please try again later.",
+        message: errorMessage,
       });
     } finally {
       setUpdatingPayment(null);

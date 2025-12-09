@@ -12,7 +12,7 @@ router.get('/user-submissions', protect, getUserSubmissionsCount);
 router.get('/download/:id', protect, downloadPaper);
 router.get('/view/:id', protect, viewPaper); // New route for viewing PDFs in browser
 router.get('/:id', protect, getPaperById);
-router.patch('/:id/payment', protect, updatePaymentId);
+router.post('/:id/payment', protect, updatePaymentId); // Changed from PATCH to POST for Apache compatibility
 
 // Re-upload abstract route (when reset by admin)
 router.post('/:id/re-upload-abstract', protect, upload.single('paperPdf'), reUploadAbstract);

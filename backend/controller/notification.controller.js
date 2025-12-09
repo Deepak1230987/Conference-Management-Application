@@ -7,12 +7,19 @@ export const getUserNotifications = async (req, res) => {
         const userId = req.user.id;
         const { page = 1, limit = 20, onlyUnread = false } = req.query;
 
+        console.log('=== getUserNotifications ===');
+        console.log('User ID:', userId);
+        console.log('Query params:', { page, limit, onlyUnread });
+
         const result = await NotificationService.getUserNotifications(
             userId,
             parseInt(page),
             parseInt(limit),
             onlyUnread === 'true'
         );
+
+        console.log('Notifications found:', result.notifications.length);
+        console.log('First notification:', result.notifications[0]);
 
         res.json({
             success: true,

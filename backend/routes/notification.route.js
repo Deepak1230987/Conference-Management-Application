@@ -15,8 +15,8 @@ const router = express.Router();
 // User notification routes
 router.get('/', protect, getUserNotifications);
 router.get('/unread-count', protect, getUnreadCount);
-router.patch('/:notificationId/read', protect, markAsRead);
-router.patch('/read-all', protect, markAllAsRead);
+router.post('/:notificationId/read', protect, markAsRead);
+router.post('/read-all', protect, markAllAsRead);
 router.delete('/:notificationId', protect, deleteNotification);
 
 // Admin notification routes

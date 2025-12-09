@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Schedule from "./pages/Schedule";
 import ImportantDates from "./pages/ImportantDates";
 import Speakers from "./pages/Speakers";
+import PlenarySpeakers from "./pages/PlenarySpeakers";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -45,6 +46,7 @@ function App() {
               <Route path="/schedule" element={<Schedule />} />
               <Route path="/important-dates" element={<ImportantDates />} />
               <Route path="/speakers" element={<Speakers />} />
+              <Route path="/plenary-speakers" element={<PlenarySpeakers />} />
 
               {/* Participation routes */}
               <Route path="/registration" element={<Registration />} />

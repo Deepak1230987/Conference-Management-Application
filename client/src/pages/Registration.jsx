@@ -5,7 +5,7 @@ import SimpleCaptcha from "../components/SimpleCaptcha";
 import { Eye, EyeOff } from "lucide-react";
 
 // Configuration toggle - Change this to true to enable login/registration
-const REGISTRATION_OPEN = false;
+const REGISTRATION_OPEN = true;
 
 const Registration = () => {
   const [formData, setFormData] = useState({

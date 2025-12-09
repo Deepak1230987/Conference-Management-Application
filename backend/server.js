@@ -28,7 +28,16 @@ const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://10.25.1.5/ictacem2025',
+    origin: [
+        process.env.CLIENT_URL || 'http://10.25.1.5/ictacem2025',
+        'http://www.ae.iitkgp.ac.in',
+        'https://www.ae.iitkgp.ac.in',
+        'http://ae.iitkgp.ac.in',
+        'https://ae.iitkgp.ac.in',
+        'http://10.25.1.5',
+        'http://localhost:5173',
+        'http://localhost:3000'
+    ],
     credentials: true
 }));
 app.use(express.json());
@@ -36,7 +45,24 @@ app.use(cookieParser()); // Add cookie parser middleware
 
 // Add request logging middleware to debug API calls
 app.use((req, res, next) => {
-    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    const timestamp = new Date().toISOString();
+    console.log(`${timestamp} - ${req.method} ${req.url}`);
+    console.log(`  Origin: ${req.headers.origin || 'none'}`);
+    console.log(`  User-Agent: ${req.headers['user-agent'] || 'none'}`);
+    console.log(`  IP: ${req.ip || req.connection.remoteAddress}`);
+
+    // Log payment update requests for debugging
+    if (req.url.includes('/payment') && req.method === 'PATCH') {
+        console.log('Payment update request:', {
+            url: req.url,
+            method: req.method,
+            origin: req.headers.origin,
+            cookies: Object.keys(req.cookies || {}),
+            hasAuthHeader: !!req.headers.authorization,
+            contentType: req.headers['content-type']
+        });
+    }
+
     if (req.url.includes('/api/admin/papers') && req.method === 'POST') {
         console.log('Admin file upload request received:', {
             url: req.url,

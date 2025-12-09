@@ -23,7 +23,6 @@ const NotificationDropdown = () => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-
   // Format notification message to replace status values
   const formatNotificationMessage = (message) => {
     // Replace common status patterns in messages
@@ -56,9 +55,10 @@ const NotificationDropdown = () => {
   const fetchUnreadCount = async () => {
     try {
       const response = await NotificationAPI.getUnreadCount();
-      setUnreadCount(response.count);
+      setUnreadCount(response.count || 0);
     } catch (error) {
       console.error("Error fetching unread count:", error);
+      setUnreadCount(0);
     }
   };
 
@@ -67,16 +67,21 @@ const NotificationDropdown = () => {
       setLoading(true);
       const response = await NotificationAPI.getUserNotifications(pageNum, 10);
 
+      const data = response.data || {};
+      const notificationsData = data.notifications || [];
+      const paginationData = data.pagination || { hasNext: false };
+
       if (reset) {
-        setNotifications(response.data.notifications);
+        setNotifications(notificationsData);
       } else {
-        setNotifications((prev) => [...prev, ...response.data.notifications]);
+        setNotifications((prev) => [...prev, ...notificationsData]);
       }
 
-      setHasMore(response.data.pagination.hasNext);
+      setHasMore(paginationData.hasNext);
       setPage(pageNum);
     } catch (error) {
       console.error("Error fetching notifications:", error);
+      setNotifications([]);
     } finally {
       setLoading(false);
     }

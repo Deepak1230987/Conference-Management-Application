@@ -9,12 +9,12 @@ export default defineConfig({
     host: true,
     proxy: {
       '/ictacem2025/api': {
-        target: 'http://127.0.0.1:5001',
+        target: 'http://10.25.1.5:5001',
         changeOrigin: true,
         secure: false,
       },
       '/api': {
-        target: 'http://127.0.0.1:5001',
+        target: 'http://10.25.1.5:5001',
         changeOrigin: true,
         secure: false,
       }

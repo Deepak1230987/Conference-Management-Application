@@ -373,10 +373,16 @@ class NotificationService {
     // Get user notifications
     static async getUserNotifications(userId, page = 1, limit = 20, onlyUnread = false) {
         try {
+            console.log('=== NotificationService.getUserNotifications ===');
+            console.log('UserId:', userId, 'Type:', typeof userId);
+            console.log('Page:', page, 'Limit:', limit, 'OnlyUnread:', onlyUnread);
+
             const query = { recipient: userId };
             if (onlyUnread) {
                 query.isRead = false;
             }
+
+            console.log('Query:', JSON.stringify(query));
 
             const skip = (page - 1) * limit;
 
@@ -387,11 +393,23 @@ class NotificationService {
                 .skip(skip)
                 .limit(limit);
 
+            console.log('Found notifications count:', notifications.length);
+            if (notifications.length > 0) {
+                console.log('First notification sample:', {
+                    id: notifications[0]._id,
+                    recipient: notifications[0].recipient,
+                    title: notifications[0].title,
+                    isRead: notifications[0].isRead
+                });
+            }
+
             const total = await Notification.countDocuments(query);
             const unreadCount = await Notification.countDocuments({
                 recipient: userId,
                 isRead: false
             });
+
+            console.log('Total:', total, 'Unread:', unreadCount);
 
             return {
                 notifications,

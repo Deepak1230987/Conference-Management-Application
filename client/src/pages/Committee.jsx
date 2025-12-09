@@ -18,13 +18,11 @@ const Committee = () => {
       members: [
         {
           name: "Prof. Akshay Prakash",
-          position:
-            "Department of Aerospace Engineering, IIT Kharagpur",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
         },
         {
           name: "Prof. Amardip Ghosh",
-          position:
-            "Department of Aerospace Engineering, IIT Kharagpur",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
         },
         {
           name: "Prof. Anup Ghosh",
@@ -38,8 +36,7 @@ const Committee = () => {
         },
         {
           name: "Prof. B. N. Singh",
-          position:
-            "Department of Aerospace Engineering, IIT Kharagpur",
+          position: "Department of Aerospace Engineering, IIT Kharagpur",
         },
         {
           name: "Prof. C. S. Mistry",
@@ -51,7 +48,8 @@ const Committee = () => {
         },
         {
           name: "Prof. K. P. Sinhamahapatra",
-          position: "Mentor, Department of Aerospace Engineering, IIT Kharagpur",
+          position:
+            "Mentor, Department of Aerospace Engineering, IIT Kharagpur",
         },
         {
           name: "Prof. M. R. Sunny",
@@ -64,7 +62,8 @@ const Committee = () => {
         },
         {
           name: "Prof. Mira Mitra",
-          position: "Co-Convenor, Department of Aerospace Engineering, IIT Kharagpur",
+          position:
+            "Co-Convenor, Department of Aerospace Engineering, IIT Kharagpur",
         },
         {
           name: "Prof. Mrinal Kaushik",
@@ -80,7 +79,8 @@ const Committee = () => {
         },
         {
           name: "Prof. Ratan Joarder",
-          position: "Treasurer, Department of Aerospace Engineering, IIT Kharagpur",
+          position:
+            "Treasurer, Department of Aerospace Engineering, IIT Kharagpur",
         },
         {
           name: "Prof. S. C. Pradhan",
@@ -194,13 +194,11 @@ const Committee = () => {
         },
         {
           name: "Prof. Santosh Kapuria",
-          position:
-            "Indian Institute of Technology Delhi",
+          position: "Indian Institute of Technology Delhi",
         },
         {
           name: "Prof. Sudarsan Kumar",
-          position:
-            "Indian Institute of Technology Bombay",
+          position: "Indian Institute of Technology Bombay",
         },
         {
           name: "Prof. Sunetra Sarkar",
@@ -289,144 +287,106 @@ const Committee = () => {
   //  Function to render member card with different colors based on index
   const getMemberCardColor = (index) => {
     const colors = [
-      "from-blue-500 to-indigo-600",
-      "from-indigo-500 to-purple-600",
-      "from-purple-500 to-pink-600",
-      "from-red-500 to-orange-600",
-      "from-orange-500 to-amber-600",
-      "from-emerald-500 to-teal-600",
+      "bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600",
+      "bg-gradient-to-br from-violet-400 via-purple-500 to-indigo-600",
+      "bg-gradient-to-br from-sky-400 via-blue-500 to-cyan-600",
+      "bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600",
+      "bg-gradient-to-br from-amber-400 via-orange-500 to-red-500",
+      "bg-gradient-to-br from-rose-400 via-pink-500 to-purple-600",
     ];
     return colors[index % colors.length];
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Banner */}
-      <div className="relative bg-gradient-to-r from-blue-900 via-blue-700 to-indigo-800">
-        <div className="absolute inset-0 opacity-20">
-          <div
-            className="w-full h-full"
-            style={{
-              backgroundImage:
-                'url("https://images.unsplash.com/photo-1517976547714-720226b864c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")',
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-          ></div>
-        </div>
-        <div className="container mx-auto px-4 py-20 relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-            Conference <span className="text-yellow-300">Committee</span>
-          </h1>
-          <div className="w-32 h-1 bg-yellow-300 mb-8"></div>
-          <p className="text-xl text-blue-100 max-w-3xl">
-            Meet our distinguished team of experts and organizers who are
-            working tirelessly to make this aerospace conference a grand success
-          </p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Animated Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 opacity-10 blur-3xl rounded-full animate-pulse"></div>
+        
+      </div>
 
-        {/* Decorative elements */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <svg
-            className="relative block w-full h-24"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-            preserveAspectRatio="none"
-          >
-            <path
-              fill="#ffffff"
-              fillOpacity="1"
-              d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,122.7C672,96,768,64,864,74.7C960,85,1056,139,1152,149.3C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ></path>
-          </svg>
+      {/* Hero Section */}
+      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="inline-block mb-6">
+            <span className="px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 text-white">
+              👥 Conference Team
+            </span>
+          </div>
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            Meet Our <br />
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
+              Committee
+            </span>
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-4">
+            Distinguished experts and organizers working together for an
+            outstanding conference
+          </p>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-12">
-        {/* Main Committee Sections */}
-        {committeeData.map((section, sectionIndex) => (
-          <div key={sectionIndex} className="committee-section mb-16">
-            <div className="relative mb-10">
-              <div className="absolute left-0 top-1/2 w-full h-px bg-gray-200"></div>
-              <div className="relative flex items-center">
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl z-10">
-                  {sectionIndex + 1}
+      <div className="relative px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="max-w-7xl mx-auto">
+          {/* Main Committee Sections */}
+          {committeeData.map((section, sectionIndex) => (
+            <div key={sectionIndex} className="mb-20">
+              {/* Section Header */}
+              <div className="relative mb-12">
+                <div className="absolute left-0 top-1/2 w-full h-px bg-slate-700"></div>
+                <div className="relative flex items-center">
+                  <div className="bg-gradient-to-r from-cyan-400 to-blue-500 w-12 h-12 rounded-full flex items-center justify-center text-slate-900 font-bold text-xl z-10">
+                    {sectionIndex + 1}
+                  </div>
+                  <h2 className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 ml-4 pl-4 pr-8 text-3xl font-bold text-white z-10">
+                    {section.title}
+                  </h2>
                 </div>
-                <h2 className="bg-white ml-4 pl-4 pr-8 text-2xl font-bold text-blue-800 z-10">
-                  {section.title}
-                </h2>
+              </div>
+
+              {/* Members Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {section.members.map((member, memberIndex) => {
+                  const color = getMemberCardColor(memberIndex);
+                  return (
+                    <div key={memberIndex} className="group relative">
+                      {/* Glowing Border Effect */}
+                      <div
+                        className={`absolute inset-0 ${color} opacity-0 group-hover:opacity-100 blur-lg rounded-2xl transition-opacity duration-500 -z-10`}
+                      ></div>
+
+                      {/* Card */}
+                      <div className="relative bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl overflow-hidden backdrop-blur-xl border border-slate-700 group-hover:border-slate-500 transition-all duration-500 shadow-2xl p-6">
+                        {/* Top Gradient Bar */}
+                        <div
+                          className={`h-1.5 w-full bg-gradient-to-r ${color} absolute top-0 left-0 right-0`}
+                        ></div>
+
+                        <div className="mt-2">
+                          {/* Name */}
+                          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-400 group-hover:bg-clip-text transition-all duration-300">
+                            {member.name}
+                          </h3>
+
+                          {/* Position */}
+                          <p className="text-sm text-gray-300 leading-relaxed">
+                            {member.position}
+                          </p>
+
+                        </div>
+
+                        {/* Hover Shine Effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500">
+                          <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent opacity-10"></div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-
-            {/* Different layout based on committee importance */}
-            <div
-              className={`grid gap-6 ${
-                sectionIndex <= 2
-                  ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-                  : "grid-cols-1 md:grid-cols-3 lg:grid-cols-4"
-              }`}
-            >
-              {section.members.map((member, memberIndex) => (
-                <div
-                  key={memberIndex}
-                  className={`transform transition-all duration-300 ${
-                    sectionIndex <= 2
-                      ? "hover:-translate-y-2"
-                      : "hover:scale-105"
-                  }`}
-                  style={{
-                    transformOrigin: "center",
-                  }}
-                >
-                  <div
-                    className={`bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-gray-100 flex flex-col ${
-                      sectionIndex > 2 ? "p-0" : "pb-4"
-                    }`}
-                  >
-                    <div
-                      className={`h-2 w-full bg-gradient-to-r ${getMemberCardColor(
-                        memberIndex
-                      )}`}
-                    ></div>
-                    <div className="p-4 flex-grow">
-                      <h3
-                        className={`font-bold text-gray-800 mb-2 ${
-                          sectionIndex <= 2 ? "text-lg" : "text-base"
-                        }`}
-                      >
-                        {member.name}
-                      </h3>
-                      {member.position && (
-                        <p className="text-gray-600 mb-1 italic text-sm">
-                          {member.position}
-                        </p>
-                      )}
-                    </div>
-                    {member.email && (
-                      <div className="px-4 pb-2 mt-auto">
-                        <a
-                          href={`mailto:${member.email}`}
-                          className="flex items-center text-blue-600 hover:text-blue-800 transition-colors text-sm"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-4 w-4 mr-2"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                          </svg>
-                          {member.email}
-                        </a>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

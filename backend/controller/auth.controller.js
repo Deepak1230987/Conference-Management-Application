@@ -44,8 +44,8 @@ const createAlternativeTransporter = () => {
 // Cookie options for JWT
 const cookieOptions = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production', // Set to true in production
-    sameSite: 'strict',
+    secure: process.env.NODE_ENV === 'production', // Set to true in production (HTTPS)
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-site in production, 'lax' for dev
     path: '/', // Explicitly set path
     maxAge: 5 * 24 * 60 * 60 * 1000, // 5 days
 };
@@ -66,14 +66,15 @@ const sendTokenResponse = (user, statusCode, res) => {
     // Set token in HTTP-only cookie
     res.cookie('jwt', token, cookieOptions);
 
-    // Send response - ensuring role is explicitly included
+    // Send response - ensuring role is explicitly included and token for fallback
     res.status(statusCode).json({
         success: true,
         _id: user._id,
         username: user.username,
         email: user.email,
         role: user.role,
-        customUserId: user.customUserId
+        customUserId: user.customUserId,
+        token: token // Include token in response for localStorage fallback
     });
 };
 

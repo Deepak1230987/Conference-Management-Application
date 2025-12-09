@@ -36,6 +36,11 @@ const Navbar = () => {
       icon: "ri-calendar-2-line",
     },
     {
+      name: "Plenary Speakers",
+      path: "/plenary-speakers",
+      icon: "ri-mic-2-line",
+    },
+    {
       name: "Committee",
       path: "/committee",
       icon: "ri-team-line",

@@ -36,6 +36,11 @@ const NotificationsPage = () => {
         onlyUnread
       );
 
+      // Handle different response structures flexibly
+      const responseData = response.data?.data || response.data || {};
+      const notificationsArray = responseData.notifications || [];
+      const paginationData = responseData.pagination || {};
+
       if (filter === "read") {
         // Filter for read notifications on client side since API doesn't have this option
         const allResponse = await NotificationAPI.getUserNotifications(
@@ -43,20 +48,21 @@ const NotificationsPage = () => {
           20,
           false
         );
-        const readNotifications = allResponse.data.notifications.filter(
-          (n) => n.isRead
-        );
+        const allData = allResponse.data?.data || allResponse.data || {};
+        const allNotifications = allData.notifications || [];
+        const readNotifications = allNotifications.filter((n) => n.isRead);
         setNotifications(readNotifications);
-        setPagination(allResponse.data.pagination);
+        setPagination(allData.pagination || {});
       } else {
-        setNotifications(response.data.notifications);
-        setPagination(response.data.pagination);
+        setNotifications(notificationsArray);
+        setPagination(paginationData);
       }
 
       setError(null);
     } catch (err) {
       setError(err.message || "Failed to fetch notifications");
       console.error("Error fetching notifications:", err);
+      setNotifications([]);
     } finally {
       setLoading(false);
     }
@@ -65,9 +71,10 @@ const NotificationsPage = () => {
   const fetchUnreadCount = async () => {
     try {
       const response = await NotificationAPI.getUnreadCount();
-      setUnreadCount(response.count);
+      setUnreadCount(response.data?.count || response.count || 0);
     } catch (err) {
       console.error("Error fetching unread count:", err);
+      setUnreadCount(0);
     }
   };
 
