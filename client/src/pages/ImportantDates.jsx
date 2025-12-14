@@ -18,7 +18,7 @@ const ImportantDates = () => {
       icon: "✉️",
     },
     {
-      date: "December 10, 2025",
+      date: "December 20, 2025",
       event: "Deadline for Submission of Final Full Length Paper (online)",
       icon: "📄",
     },

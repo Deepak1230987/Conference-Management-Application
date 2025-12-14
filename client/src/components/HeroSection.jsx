@@ -418,6 +418,34 @@ const HeroSection = () => {
                 </div>
               </div>
 
+              {/* Venue Map Download */}
+              <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-400/30 backdrop-blur-sm hover:shadow-lg transition-shadow duration-300">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 mt-1">
+                    <i className="ri-map-2-line text-2xl text-emerald-400"></i>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-semibold text-white mb-1">
+                      Route Map and Bus Service
+                    </h4>
+                    <p className="text-gray-200 mb-2">
+                      Download the route map and bus service information to navigate the conference
+                      location.
+                    </p>
+                    <a
+                      href="/ictacem2025/api/documents/ICTACEM2025_Map.pdf"
+                      download="ICTACEM_2025_Venue_Map.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-emerald-300 hover:text-emerald-200 font-semibold text-sm transition-colors duration-200"
+                    >
+                      <i className="ri-download-2-line"></i>
+                      <span>Download Map</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
               {/* Extended Deadline Announcement */}
               {/* <div className="mb-6 relative">
                 <div className="inline-flex items-center w-fit gap-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg border border-amber-300/50 ">
@@ -521,7 +549,7 @@ const HeroSection = () => {
                         key={sponsor.id || index}
                         className="flex justify-center"
                       >
-                        <div className="bg-white/95 backdrop-blur-sm p-1 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full max-w-[140px]">
+                        <div className="bg-white/95 backdrop-blur-sm p-0  shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full max-w-[140px]">
                           <img
                             src={sponsor.url}
                             alt={sponsor.name || "Conference Sponsor"}

@@ -162,6 +162,32 @@ app.get('/ictacem2025/api/book-of-abstracts', (req, res) => {
     }
 });
 
+// Specific route for venue map with proper headers
+app.get('/ictacem2025/api/venue-map', (req, res) => {
+    try {
+        const mapPath = path.join(__dirname, 'public/documents/ICTACEM2025_Map.pdf');
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'attachment; filename="ICTACEM_2025_Venue_Map.pdf"');
+        res.sendFile(mapPath);
+    } catch (error) {
+        console.error('Error serving venue map:', error);
+        res.status(500).json({ message: 'Error serving venue map file' });
+    }
+});
+
+// Specific route for book of abstracts PDF with proper headers
+app.get('/ictacem2025/api/book-of-abstracts-pdf', (req, res) => {
+    try {
+        const abstractsPath = path.join(__dirname, 'public/documents/Book of abstracts.pdf');
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'inline; filename="ICTACEM_2025_Book_of_Abstracts.pdf"');
+        res.sendFile(abstractsPath);
+    } catch (error) {
+        console.error('Error serving book of abstracts:', error);
+        res.status(500).json({ message: 'Error serving book of abstracts file' });
+    }
+});
+
 // Mount all API routes under /ictacem2025 prefix FIRST (most specific routes first)
 app.use('/ictacem2025/api/auth', authRoutes);
 app.use('/ictacem2025/api/papers', paperRoutes);

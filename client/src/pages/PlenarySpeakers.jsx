@@ -39,12 +39,6 @@ const PlenarySpeakers = () => {
       websiteLink: "https://iitm.irins.org/profile/50694",
     },
     {
-      name: "Dr. Partha Adhikari",
-      affiliation: "Boeing Company",
-      designation: "",
-      websiteLink: "",
-    },
-    {
       name: "Dr. Kallappa Pattada",
       affiliation: "Boeing Company",
       designation: "",

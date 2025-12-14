@@ -57,11 +57,11 @@ const Navbar = () => {
       path: "/full-length-paper-format",
       icon: "ri-file-list-3-line",
     },
-    // {
-    //   name: "Book of Abstracts",
-    //   path: "/book-of-abstracts",
-    //   icon: "ri-book-read-line",
-    // },
+    {
+      name: "Book of Abstracts",
+      path: "/book-of-abstracts",
+      icon: "ri-book-read-line",
+    },
 
     // Financial & Partnership
     {

@@ -49,14 +49,7 @@ const Footer = () => {
                   Home
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="text-green-200 hover:text-white transition-colors duration-200 text-sm"
-                >
-                  About Conference
-                </Link>
-              </li>
+           
               <li>
                 <Link
                   to="/committee"
@@ -67,18 +60,18 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/speakers"
+                  to="/plenary-speakers"
                   className="text-green-200 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Keynote Speakers
+                  Plenary Speakers
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/schedule"
+                  to="/book-of-abstracts"
                   className="text-green-200 hover:text-white transition-colors duration-200 text-sm"
                 >
-                  Schedule
+                  Technical Schedule
                 </Link>
               </li>
             </ul>
