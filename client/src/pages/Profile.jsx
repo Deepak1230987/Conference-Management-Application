@@ -1007,6 +1007,9 @@ const Profile = () => {
                                         complete the payment to finalize your
                                         registration for the conference.
                                       </p>
+                                      <p className="text-sm font-bold text-blue-700">
+                                        An author needs to submit the payment ID to submit their full-length paper.
+                                      </p>
 
                                       <div className="mb-4">
                                         <h5 className="font-medium text-gray-700 mb-2 capitalize">
